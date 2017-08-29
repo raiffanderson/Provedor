@@ -1,9 +1,9 @@
 
-public class Funcionario extends Pessoa{
+public class Tecnico extends Pessoa{
 
 	String cargo;
 	
-	public Funcionario(int idade, int rg, int cpf, String sexo, String cargo) {
+	public Tecnico(int idade, int rg, int cpf, String sexo) {
 		super(idade, rg, cpf, sexo);
 		this.cargo = cargo;
 	}

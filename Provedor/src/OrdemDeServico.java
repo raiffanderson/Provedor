@@ -1,11 +1,14 @@
+import java.util.Date;
 
 public class OrdemDeServico extends Pessoa{
 
 	private int num;
-	private String motivo, data;
+	private String motivo;
+	private Date data;
+	private Status status;
 	
 	public OrdemDeServico(int idade, int rg, int cpf, String sexo, int num,
-			String motivo, String data) {
+			String motivo, Date data) {
 		super(idade, rg, cpf, sexo);
 		this.num = num;
 		this.motivo = motivo;
@@ -32,12 +35,12 @@ public class OrdemDeServico extends Pessoa{
 		this.motivo = motivo;
 	}
 	
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
