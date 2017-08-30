@@ -10,11 +10,11 @@ public class OrdemDeServico extends Pessoa{
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
 	
 	public OrdemDeServico(int idade, int rg, int cpf, String sexo, int num,
-			String motivo, Date data) {
+			String motivo) {
 		super(idade, rg, cpf, sexo);
 		this.num = num;
 		this.motivo = motivo;
-		this.data = data;
+		this.data = new Date();
 		this.status = Status.ABERTO;
 	}
 	
