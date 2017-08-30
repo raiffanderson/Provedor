@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class OrdemDeServico extends Pessoa{
@@ -6,6 +7,7 @@ public class OrdemDeServico extends Pessoa{
 	private String motivo;
 	private Date data;
 	private Status status;
+	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
 	
 	public OrdemDeServico(int idade, int rg, int cpf, String sexo, int num,
 			String motivo, Date data) {
@@ -13,6 +15,7 @@ public class OrdemDeServico extends Pessoa{
 		this.num = num;
 		this.motivo = motivo;
 		this.data = data;
+		this.status = Status.ABERTO;
 	}
 	
 
@@ -50,9 +53,26 @@ public class OrdemDeServico extends Pessoa{
 	}
 
 
-	public void criarOrdem(){
-		
+	public Status getStatus() {
+		return status;
 	}
+
+
+	public ArrayList<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+
+	public void insereComentario(String comentarioStr, Pessoa resposanvel) {
+		Comentario comentario = new Comentario(comentarioStr, resposanvel);
+		this.comentarios.add(comentario);
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 
 	public void fecharOrdem(){
 		

@@ -22,4 +22,12 @@ public class Provedor {
 	private void removeOS(OrdemDeServico OS){
 		listaOSs.remove(OS);
 	}
+	
+	private void atualizarStatusOS(OrdemDeServico OS, Status status){
+		OS.setStatus(status);
+	}
+	
+	private void inserirComentarioOS(OrdemDeServico OS, String str, Pessoa pessoa) {
+		OS.insereComentario(str, pessoa);
+	}
 }
