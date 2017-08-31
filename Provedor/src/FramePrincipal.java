@@ -54,27 +54,27 @@ public class FramePrincipal {
 		framePrincipal.setResizable(false);
 		framePrincipal.setFont(new Font("Bodoni MT Condensed", Font.BOLD, 14));
 		framePrincipal.setTitle("PROVEDOR");
-		framePrincipal.setBounds(100, 100, 735, 400);
+		framePrincipal.setBounds(100, 100, 767, 400);
 		framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framePrincipal.getContentPane().setLayout(null);
 		
-		JLabel lblOrdensDeServio = new JLabel("Ordens De Servi\u00E7o");
+		JLabel lblOrdensDeServio = new JLabel("Ordem De Servi\u00E7o");
 		lblOrdensDeServio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOrdensDeServio.setFont(new Font("Courier New", Font.BOLD, 24));
-		lblOrdensDeServio.setBounds(102, 40, 261, 53);
+		lblOrdensDeServio.setBounds(288, 37, 261, 53);
 		framePrincipal.getContentPane().add(lblOrdensDeServio);
 		
-		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		//JButton btnAtualizar = new JButton("Alterar");
+		//btnAtualizar.addActionListener(new ActionListener() {
+			//public void actionPerformed(ActionEvent arg0) {
 
-			}
-		});
-		btnAtualizar.setBounds(517, 57, 89, 23);
-		framePrincipal.getContentPane().add(btnAtualizar);
+			//}
+		//});
+		//btnAtualizar.setBounds(517, 57, 118, 23);
+		//framePrincipal.getContentPane().add(btnAtualizar);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(110, 100, 600, 200);
+		scrollPane_1.setBounds(134, 100, 609, 200);
 		framePrincipal.getContentPane().add(scrollPane_1);
 		
 		
@@ -93,7 +93,7 @@ public class FramePrincipal {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton.setBounds(10, 104, 89, 23);
+		btnNewButton.setBounds(26, 134, 96, 23);
 		framePrincipal.getContentPane().add(btnNewButton);
 		
 		JButton btnDeletar = new JButton("DELETAR");
@@ -103,12 +103,12 @@ public class FramePrincipal {
 			}
 		});
 		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnDeletar.setBounds(11, 138, 89, 23);
+		btnDeletar.setBounds(25, 169, 96, 23);
 		framePrincipal.getContentPane().add(btnDeletar);
 		
-		JButton btnAtualizar_1 = new JButton("ATUALIZAR");
+		JButton btnAtualizar_1 = new JButton("ALTERAR");
 		btnAtualizar_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnAtualizar_1.setBounds(11, 172, 89, 23);
+		btnAtualizar_1.setBounds(25, 204, 96, 23);
 		framePrincipal.getContentPane().add(btnAtualizar_1);
 				
 	}
