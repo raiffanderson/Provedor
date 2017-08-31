@@ -1,9 +1,13 @@
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+
 public class Provedor {
 
 	private ArrayList<OrdemDeServico> listaOSs;
+	private ArrayList<Cliente> clientes;
 	
 //	private OrdemDeServico newOS = new OrdemDeServico(25, 1234, 1234, "M", 1, "Queda de Sinal") ;
 	
@@ -11,17 +15,25 @@ public class Provedor {
 	public Provedor() {
 		super();
 		this.listaOSs = new ArrayList<OrdemDeServico>();
+		this.clientes = new ArrayList<Cliente>();
+		Cliente cliente1 = new Cliente(20, 464897, 68141, Sexo.MASCULINO, 1, "Basico");
+		Cliente cliente2 = new Cliente(38, 684165, 58721, Sexo.MASCULINO, 2, "Completo");
+		Cliente cliente3 = new Cliente(29, 353425, 35322, Sexo.FEMININO, 3, "Intermediario");
+		clientes.add(cliente1);
+		clientes.add(cliente2);
+		clientes.add(cliente3);
 		listaOSs.add(new OrdemDeServico(new Cliente(26, 456, 1234, Sexo.FEMININO, 0, null), "Queda de Sinal"));
 		listaOSs.add(new OrdemDeServico(new Cliente(28, 654, 1894, Sexo.MASCULINO, 0, null),"Inadimplencia"));
+		this.criaOS(cliente3, "Teste");
+		this.criaOS(cliente2, "Teste");
 	}
 
-	private void criaOS(Cliente cliente, int num, String motivo, Date data){
+	public void criaOS(Cliente cliente, String motivo){
 		OrdemDeServico OS = new OrdemDeServico(	cliente,motivo);
 		listaOSs.add(OS);
-
 	}
 	
-	private void removeOS(OrdemDeServico OS){
+	public void removeOS(OrdemDeServico OS){
 		listaOSs.remove(OS);
 	}
 	
@@ -40,6 +52,24 @@ public class Provedor {
 	public void setListaOSs(ArrayList<OrdemDeServico> listaOSs) {
 		this.listaOSs = listaOSs;
 	}
-	
+
+	public DefaultListModel getListaOSsModel() {
+		DefaultListModel listModel = new DefaultListModel();
+		for(OrdemDeServico os: this.getListaOSs()){
+			listModel.addElement(os);
+		}
+		return listModel;
+	}
+	public DefaultListModel getListaClientesModel() {
+		DefaultListModel clientesModel = new DefaultListModel();
+		for(Cliente cliente: this.getClientes()){
+			clientesModel.addElement(cliente);
+		}
+		return clientesModel;
+	}
+
+	private ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
 	
 }

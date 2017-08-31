@@ -22,6 +22,7 @@ public class FramePrincipal {
 
 	private JFrame framePrincipal;
 	Provedor provedor = new Provedor();
+	DefaultListModel listModel = new DefaultListModel();
 	/**
 	 * Launch the application.
 	 */
@@ -77,17 +78,18 @@ public class FramePrincipal {
 		framePrincipal.getContentPane().add(scrollPane_1);
 		
 		
-		DefaultListModel listModel = new DefaultListModel();
-		listModel.addElement(provedor.getListaOSs().get(0));
-		listModel.addElement(provedor.getListaOSs().get(1));
+		listModel = provedor.getListaOSsModel();
 		JList list = new JList(listModel);
 		scrollPane_1.setViewportView(list);
 		
 		JButton btnNewButton = new JButton("CRIAR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
+				frameCriaOS.setVisible(true);
+//				DefaultListModel listModelClientes = new DefaultListModel<>()
 //				listModel.addElement(element);
+				provedor.criaOS(new Cliente(20, 464897, 68141, Sexo.MASCULINO, 1, "Basico"),"");
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
