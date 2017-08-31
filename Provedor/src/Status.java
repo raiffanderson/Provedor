@@ -1,7 +1,7 @@
 
 public enum Status {
 	
-	ABERTO(1),FECHADO(2), EM_ATENDIMENTO(3), AGUARDANDO_VISITA(4) ;
+	ABERTO(1), FECHADO(2), CANCELADO(3);
 	
 	public int status;
 
