@@ -64,7 +64,7 @@ public class FrameCriacaoOS extends JFrame {
 		
 		scrollPane.setViewportView(list);
 		
-		JButton btnNovoCliente = new JButton("Novo Cliente");
+		JButton btnNovoCliente = new JButton("Cliente");
 		btnNovoCliente.setBounds(281, 54, 113, 23);
 		contentPane.add(btnNovoCliente);
 		
