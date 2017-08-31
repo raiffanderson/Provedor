@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-public class OrdemDeServico extends Pessoa{
+public class OrdemDeServico {
 
 	private int num;
 	private String motivo;
@@ -9,15 +9,12 @@ public class OrdemDeServico extends Pessoa{
 	private Status status;
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
 	
-	public OrdemDeServico(int idade, int rg, int cpf, String sexo, int num,
-			String motivo) {
-		super(idade, rg, cpf, sexo);
-		this.num = num;
+	public OrdemDeServico(Cliente cliente, String motivo) {
+		super();
 		this.motivo = motivo;
-		this.data = new Date();
 		this.status = Status.ABERTO;
 	}
-	
+
 
 	public int getNum() {
 		return num;

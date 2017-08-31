@@ -4,7 +4,7 @@ public class Cliente extends Pessoa{
 	int id_cliente;
 	String tipoPlano;
 	
-	public Cliente(int idade, int rg, int cpf, String sexo, int id_cliente,
+	public Cliente(int idade, int rg, int cpf, Sexo sexo, int id_cliente,
 			String tipoPlano) {
 		super(idade, rg, cpf, sexo);
 		this.id_cliente = id_cliente;

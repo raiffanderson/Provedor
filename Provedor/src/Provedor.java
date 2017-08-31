@@ -11,15 +11,12 @@ public class Provedor {
 	public Provedor() {
 		super();
 		this.listaOSs = new ArrayList<OrdemDeServico>();
-		listaOSs.add(new OrdemDeServico(25, 1234, 1234, "M", 1, "Queda de Sinal"));
+		listaOSs.add(new OrdemDeServico(new Cliente(26, 456, 1234, Sexo.FEMININO, 0, null), "Queda de Sinal"));
+		listaOSs.add(new OrdemDeServico(new Cliente(28, 654, 1894, Sexo.MASCULINO, 0, null),"Inadimplencia"));
 	}
 
 	private void criaOS(Cliente cliente, int num, String motivo, Date data){
-		OrdemDeServico OS = new OrdemDeServico(	cliente.getIdade(), 
-												cliente.getRg(), 
-												cliente.getCpf(), 
-												cliente.getSexo(), 
-												num, motivo);
+		OrdemDeServico OS = new OrdemDeServico(	cliente,motivo);
 		listaOSs.add(OS);
 
 	}

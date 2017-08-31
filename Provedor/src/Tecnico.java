@@ -3,7 +3,7 @@ public class Tecnico extends Pessoa{
 
 	String cargo;
 	
-	public Tecnico(int idade, int rg, int cpf, String sexo) {
+	public Tecnico(int idade, int rg, int cpf, Sexo sexo) {
 		super(idade, rg, cpf, sexo);
 		this.cargo = cargo;
 	}

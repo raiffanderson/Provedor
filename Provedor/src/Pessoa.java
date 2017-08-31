@@ -2,9 +2,9 @@
 public class Pessoa {
 
 	private int idade, rg, cpf;
-	private String sexo;
+	private Sexo sexo;
 	
-	public Pessoa(int idade, int rg, int cpf, String sexo) {
+	public Pessoa(int idade, int rg, int cpf, Sexo sexo) {
 		super();
 		this.idade = idade;
 		this.rg = rg;
@@ -43,12 +43,12 @@ public class Pessoa {
 	}
 
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 

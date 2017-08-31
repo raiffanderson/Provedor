@@ -50,6 +50,7 @@ public class FramePrincipal {
 	 */
 	private void initialize() {
 		framePrincipal = new JFrame();
+		framePrincipal.setResizable(false);
 		framePrincipal.setFont(new Font("Bodoni MT Condensed", Font.BOLD, 14));
 		framePrincipal.setTitle("PROVEDOR");
 		framePrincipal.setBounds(100, 100, 735, 400);
@@ -77,19 +78,34 @@ public class FramePrincipal {
 		
 		
 		DefaultListModel listModel = new DefaultListModel();
-		listModel.addElement(provedor.getListaOSs());
+		listModel.addElement(provedor.getListaOSs().get(0));
+		listModel.addElement(provedor.getListaOSs().get(1));
 		JList list = new JList(listModel);
 		scrollPane_1.setViewportView(list);
 		
 		JButton btnNewButton = new JButton("CRIAR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+//				listModel.addElement(element);
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnNewButton.setBounds(10, 104, 89, 23);
 		framePrincipal.getContentPane().add(btnNewButton);
 		
 		JButton btnDeletar = new JButton("DELETAR");
+		btnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listModel.removeElement(list.getSelectedValue());
+			}
+		});
+		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnDeletar.setBounds(11, 138, 89, 23);
 		framePrincipal.getContentPane().add(btnDeletar);
 		
 		JButton btnAtualizar_1 = new JButton("ATUALIZAR");
+		btnAtualizar_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnAtualizar_1.setBounds(11, 172, 89, 23);
 		framePrincipal.getContentPane().add(btnAtualizar_1);
 				
