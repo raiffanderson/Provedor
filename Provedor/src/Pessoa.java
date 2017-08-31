@@ -65,9 +65,7 @@ public class Pessoa {
 	public void fecharOrdem(){
 		
 	}
-	
 	public void cancelarOrdem(){
 		
 	}
-	
 }
