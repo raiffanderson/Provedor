@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.ListModel;
 
 public class Provedor {
@@ -71,6 +72,10 @@ public class Provedor {
 
 	private ArrayList<Cliente> getClientes() {
 		return clientes;
+	}
+
+	public void cadastraCliente(JLabel lblNome, JLabel lblCpf, JLabel lblRg, JLabel lblSexo) {
+//		Cliente novoCliente = new Cliente(lblNome,lblCpf,lblRg,lblSexo);
 	}
 	
 }
