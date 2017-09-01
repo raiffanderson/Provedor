@@ -7,7 +7,7 @@ public class OrdemDeServico {
 	private Date data;
 	private Status status;
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
-	private static int nextId = 0;
+	private static int nextId = 1;
 	private static int getNextId() {return nextId++;}
 	private int id = getNextId();
 	public int getId() {return id;}
@@ -35,8 +35,11 @@ public class OrdemDeServico {
 		this.data = data;
 	}
 
+
+
+	@Override
 	public String toString() {
-		return "OrdemDeServico [num=" + id + ", motivo=" + motivo + ", data=" + data + "]";
+		return "OrdemDeServico [ID: " + id + " | status: " + status + " | motivo: " + motivo + " | data: " + data + " ]";
 	}
 
 	public Status getStatus() {

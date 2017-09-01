@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class FrameCriacaoOS extends JFrame {
 
 	private JPanel contentPane;
-	protected static Provedor provedor = new Provedor();
+	private Provedor provedor = new Provedor();
 	private JTextField textFieldComentario;
 
 	/**
@@ -60,18 +60,23 @@ public class FrameCriacaoOS extends JFrame {
 		scrollPane.setBounds(10, 40, 230, 89);
 		contentPane.add(scrollPane);
 		
-		JList list = new JList(provedor.getListaClientesModel());
+		JList list = new JList(getProvedor().getListaClientesModel());
 		
 		scrollPane.setViewportView(list);
 		
 		JButton btnNovoCliente = new JButton("Cliente");
 		btnNovoCliente.setBounds(281, 54, 113, 23);
 		contentPane.add(btnNovoCliente);
-		
+
 		JButton btnNewButton = new JButton("Criar OS");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				FramePrincipal frmPrincipal = new FramePrincipal();
 				provedor.criaOS((Cliente) list.getSelectedValue(),textFieldComentario.getText());
+				frmPrincipal.setProvedor(provedor);
+				frmPrincipal.updateListOS();
+				frmPrincipal.getFramePrincipal().setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(281, 88, 113, 23);
@@ -86,5 +91,13 @@ public class FrameCriacaoOS extends JFrame {
 		lblComentrio.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblComentrio.setBounds(10, 156, 120, 14);
 		contentPane.add(lblComentrio);
+	}
+
+	public Provedor getProvedor() {
+		return provedor;
+	}
+
+	public void setProvedor(Provedor provedor) {
+		this.provedor = provedor;
 	}
 }

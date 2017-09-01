@@ -22,14 +22,14 @@ public class Provedor {
 		clientes.add(cliente1);
 		clientes.add(cliente2);
 		clientes.add(cliente3);
-		listaOSs.add(new OrdemDeServico(new Cliente(26, 456, 1234, Sexo.FEMININO, 0, null), "Queda de Sinal"));
-		listaOSs.add(new OrdemDeServico(new Cliente(28, 654, 1894, Sexo.MASCULINO, 0, null),"Inadimplencia"));
-		this.criaOS(cliente3, "Teste");
-		this.criaOS(cliente2, "Teste");
+//		listaOSs.add(new OrdemDeServico(new Cliente(26, 456, 1234, Sexo.FEMININO, 0, null), "Queda de Sinal"));
+//		listaOSs.add(new OrdemDeServico(new Cliente(28, 654, 1894, Sexo.MASCULINO, 0, null),"Inadimplencia"));
+//		this.criaOS(cliente3, "Teste");
+//		this.criaOS(cliente2, "Teste");
 	}
 
 	public void criaOS(Cliente cliente, String motivo){
-		OrdemDeServico OS = new OrdemDeServico(	cliente,motivo);
+		OrdemDeServico OS = new OrdemDeServico(cliente,motivo);
 		listaOSs.add(OS);
 	}
 	
