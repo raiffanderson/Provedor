@@ -74,8 +74,9 @@ public class Provedor {
 		return clientes;
 	}
 
-	public void cadastraCliente(JLabel lblNome, JLabel lblCpf, JLabel lblRg, JLabel lblSexo) {
-//		Cliente novoCliente = new Cliente(lblNome,lblCpf,lblRg,lblSexo);
+	public void cadastraCliente(String nome, int cpf, int rg, Sexo sexo,Date nascimento, String plano) {
+		Cliente novoCliente = new Cliente(nome,cpf,rg,sexo,nascimento,plano);
+		clientes.add(novoCliente);
 	}
 	
 }

@@ -1,26 +1,21 @@
 package entity;
 
-public class Pessoa {
+import java.util.Date;
 
-	private int idade, rg, cpf;
-	private Sexo sexo;
+public class Pessoa {
 	
-	public Pessoa(int idade, int rg, int cpf, Sexo sexo) {
+	private String nome;
+	private int rg, cpf;
+	private Sexo sexo;
+	private Date nascimento;
+	
+	public Pessoa(String nome, int rg, int cpf, Sexo sexo, Date nascimento) {
 		super();
-		this.idade = idade;
+		this.nome = nome;
 		this.rg = rg;
 		this.cpf = cpf;
 		this.sexo = sexo;
-	}
-	
-	
-	public int getIdade() {
-		return idade;
-	}
-
-
-	public void setIdade(int idade) {
-		this.idade = idade;
+		this.nascimento = nascimento;
 	}
 
 
@@ -54,9 +49,13 @@ public class Pessoa {
 	}
 
 
+
+
+
+	@Override
 	public String toString() {
-		return "Pessoa [idade=" + idade + ", rg=" + rg + ", cpf=" + cpf
-				+ ", sexo=" + sexo + "]";
+		return "Pessoa [nome:" + nome + " | rg:" + rg + " | cpf:" + cpf + " | sexo:" + sexo + " | nascimento:"
+				+ nascimento + "]";
 	}
 
 

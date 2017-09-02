@@ -1,27 +1,26 @@
 package entity;
 
+import java.util.Date;
+
 public class Cliente extends Pessoa{
 
-	int id_cliente;
 	String tipoPlano;
+	private static int nextIdCliente = 1;
+	private static int getNextIdCliente() {return nextIdCliente++;}
+	private int IdCliente = getNextIdCliente();
+	public int getIdCliente() {return IdCliente;}
 	
-	public Cliente(int idade, int rg, int cpf, Sexo sexo, int id_cliente,
-			String tipoPlano) {
-		super(idade, rg, cpf, sexo);
-		this.id_cliente = id_cliente;
+	
+
+	public Cliente(String nome, int rg, int cpf, Sexo sexo, Date nascimento, String tipoPlano) {
+		super(nome, rg, cpf, sexo, nascimento);
 		this.tipoPlano = tipoPlano;
 	}
-	
-	
-
-	public int getId_cliente() {
-		return id_cliente;
-	}
 
 
 
-	public void setId_cliente(int id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setIdCliente(int id_cliente) {
+		this.IdCliente = id_cliente;
 	}
 
 
@@ -39,7 +38,7 @@ public class Cliente extends Pessoa{
 
 
 	public String toString() {
-		return "Cliente [id_cliente=" + id_cliente + ", tipoPlano=" + tipoPlano
+		return "Cliente [id_cliente=" + IdCliente + ", tipoPlano=" + tipoPlano
 				+ "]";
 	}
 

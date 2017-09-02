@@ -85,7 +85,7 @@ public class FramePrincipal {
 		getFramePrincipal().getContentPane().add(scrollPane_1);
 
 		this.frameCriaOS.setProvedor(provedor);
-		;
+		
 		listModel = getProvedor().getListaOSsModel();
 		list = new JList(listModel);
 		scrollPane_1.setViewportView(list);
@@ -108,7 +108,8 @@ public class FramePrincipal {
 		JButton btnDeletar = new JButton("DELETAR");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listModel.removeElement(list.getSelectedValue());
+				provedor.removeOS((OrdemDeServico) list.getSelectedValue());
+				updateListOS();
 			}
 		});
 		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 10));
