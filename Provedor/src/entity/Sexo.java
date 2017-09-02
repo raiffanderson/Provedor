@@ -2,11 +2,11 @@ package entity;
 
 public enum Sexo {
 
-	MASCULINO('M'),FEMININO('N');
+	MASCULINO,FEMININO;
 	
-	public int sexo;
-
-	private Sexo(int sexo) {
-		this.sexo = sexo;
-	}
+//	public int sexo;
+//
+//	private Sexo(int sexo) {
+//		this.sexo = sexo;
+//	}
 }

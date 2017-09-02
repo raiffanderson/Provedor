@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class FrameCriacaoCliente extends JFrame {
@@ -53,57 +54,72 @@ public class FrameCriacaoCliente extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		textFieldNome = new JTextField();
 		textFieldNome.setBounds(49, 53, 220, 20);
 		contentPane.add(textFieldNome);
 		textFieldNome.setColumns(10);
-		
+
 		textFieldCPF = new JTextField();
 		textFieldCPF.setBounds(49, 84, 104, 20);
 		contentPane.add(textFieldCPF);
 		textFieldCPF.setColumns(10);
-		
+
 		textFieldRG = new JTextField();
 		textFieldRG.setBounds(49, 115, 104, 20);
 		contentPane.add(textFieldRG);
 		textFieldRG.setColumns(10);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		comboBox.setModel(new DefaultComboBoxModel(Sexo.values()));
 		comboBox.setBounds(49, 145, 86, 20);
 		contentPane.add(comboBox);
-		
+
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(10, 53, 46, 14);
 		contentPane.add(lblNome);
-		
+
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setBounds(10, 87, 46, 14);
 		contentPane.add(lblCpf);
-		
+
 		JLabel lblRg = new JLabel("RG");
 		lblRg.setBounds(10, 115, 46, 14);
 		contentPane.add(lblRg);
-		
+
 		JLabel lblSexo = new JLabel("Sexo");
 		lblSexo.setBounds(10, 148, 46, 14);
 		contentPane.add(lblSexo);
-		
+
 		JLabel lblCadastroDeCliente = new JLabel("Cadastro de Cliente");
 		lblCadastroDeCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastroDeCliente.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblCadastroDeCliente.setBounds(59, 11, 225, 31);
 		contentPane.add(lblCadastroDeCliente);
-		
+
 		JButton btnCadastrat = new JButton("Cadastrar");
 		btnCadastrat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				provedor.cadastraCliente(lblNome,lblCpf,lblRg,lblSexo);
+				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
+				provedor.cadastraCliente(textFieldNome.getText(), Integer.parseInt(textFieldCPF.getText()),
+						Integer.parseInt(textFieldRG.getText()), (Sexo) comboBox.getSelectedItem(), new Date(),
+						"Basico");
+				frameCriaOS.setProvedor(provedor);
+				frameCriaOS.updateListClientes();
+				frameCriaOS.setVisible(true);
+				dispose();
 			}
 		});
-		btnCadastrat.setBounds(232, 170, 89, 23);
+		btnCadastrat.setBounds(217, 170, 104, 23);
 		contentPane.add(btnCadastrat);
+	}
+
+	public Provedor getProvedor() {
+		return provedor;
+	}
+
+	public void setProvedor(Provedor provedor) {
+		this.provedor = provedor;
 	}
 }

@@ -1,13 +1,14 @@
 package entity;
 
+import java.util.Date;
+
 public class Atendente extends Pessoa{
 
-	String cargo;
-	
-	public Atendente(int idade, int rg, int cpf, Sexo sexo) {
-		super(idade, rg, cpf, sexo);
-		this.cargo = cargo;
+	public Atendente(String nome, int rg, int cpf, Sexo sexo, Date nascimento) {
+		super(nome, rg, cpf, sexo, nascimento);
+		// TODO Auto-generated constructor stub
 	}
+	String cargo;
 	
 
 	public String getCargo() {

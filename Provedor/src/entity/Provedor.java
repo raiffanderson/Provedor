@@ -18,12 +18,12 @@ public class Provedor {
 		super();
 		this.listaOSs = new ArrayList<OrdemDeServico>();
 		this.clientes = new ArrayList<Cliente>();
-		Cliente cliente1 = new Cliente(20, 464897, 68141, Sexo.MASCULINO, 1, "Basico");
-		Cliente cliente2 = new Cliente(38, 684165, 58721, Sexo.MASCULINO, 2, "Completo");
-		Cliente cliente3 = new Cliente(29, 353425, 35322, Sexo.FEMININO, 3, "Intermediario");
-		clientes.add(cliente1);
-		clientes.add(cliente2);
-		clientes.add(cliente3);
+//		Cliente cliente1 = new Cliente("Cliente1", 464897, 68141, Sexo.MASCULINO, new Date(), "Basico");
+//		Cliente cliente2 = new Cliente("Cliente2", 684165, 58721, Sexo.MASCULINO, new Date(), "Completo");
+//		Cliente cliente3 = new Cliente("Cliente3", 353425, 35322, Sexo.FEMININO, new Date(), "Intermediario");
+//		clientes.add(cliente1);
+//		clientes.add(cliente2);
+//		clientes.add(cliente3);
 //		listaOSs.add(new OrdemDeServico(new Cliente(26, 456, 1234, Sexo.FEMININO, 0, null), "Queda de Sinal"));
 //		listaOSs.add(new OrdemDeServico(new Cliente(28, 654, 1894, Sexo.MASCULINO, 0, null),"Inadimplencia"));
 //		this.criaOS(cliente3, "Teste");

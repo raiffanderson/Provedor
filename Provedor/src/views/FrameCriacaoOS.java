@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import java.awt.ScrollPane;
 
 import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
@@ -28,7 +29,8 @@ public class FrameCriacaoOS extends JFrame {
 	private JTextField textFieldComentario;
 	private DefaultListModel listModel;
 	private JList list;
-	private JPanel scrollPane_1;
+	private JScrollPane scrollPane;
+	FrameCriacaoCliente frameCriaCliente = new FrameCriacaoCliente();
 
 	/**
 	 * Launch the application.
@@ -66,18 +68,17 @@ public class FrameCriacaoOS extends JFrame {
 		lblClientes.setBounds(10, 11, 84, 33);
 		contentPane.add(lblClientes);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 40, 230, 89);
 		contentPane.add(scrollPane);
 		
 		listModel = provedor.getListaClientesModel();
-		JList list = new JList(listModel);
+		list = new JList(listModel);
 		scrollPane.setViewportView(list);
 		
 		JButton btnNovoCliente = new JButton("Novo Cliente");
 		btnNovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FrameCriacaoCliente frameCriaCliente = new FrameCriacaoCliente();
 				frameCriaCliente.setVisible(true);
 				frameCriaCliente.setProvedor(provedor);
 				dispose();
@@ -118,8 +119,9 @@ public class FrameCriacaoOS extends JFrame {
 	public void setProvedor(Provedor provedor) {
 		this.provedor = provedor;
 	}
-	public void updateListOS() {
-		list.setModel(provedor.getListaOSsModel());
-		scrollPane_1.updateUI();
+	
+	public void updateListClientes() {
+		list.setModel(provedor.getListaClientesModel());
+		scrollPane.updateUI();
 	}
 }
