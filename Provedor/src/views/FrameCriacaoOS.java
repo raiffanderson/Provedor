@@ -21,16 +21,17 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class FrameCriacaoOS extends JFrame {
 
 	private JPanel contentPane;
 	private Provedor provedor = new Provedor();
-	private JTextField textFieldComentario;
 	private DefaultListModel listModel;
 	private JList list;
 	private JScrollPane scrollPane;
 	FrameCriacaoCliente frameCriaCliente = new FrameCriacaoCliente();
+	private JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -91,7 +92,7 @@ public class FrameCriacaoOS extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FramePrincipal frmPrincipal = new FramePrincipal();
-				provedor.criaOS((Cliente) list.getSelectedValue(),textFieldComentario.getText());
+				provedor.criaOS((Cliente) list.getSelectedValue(),textArea.getText());
 				frmPrincipal.setProvedor(provedor);
 				frmPrincipal.updateListOS();
 				frmPrincipal.getFramePrincipal().setVisible(true);
@@ -101,15 +102,18 @@ public class FrameCriacaoOS extends JFrame {
 		btnNewButton.setBounds(281, 88, 113, 23);
 		contentPane.add(btnNewButton);
 		
-		textFieldComentario = new JTextField();
-		textFieldComentario.setBounds(10, 178, 384, 51);
-		contentPane.add(textFieldComentario);
-		textFieldComentario.setColumns(10);
-		
 		JLabel lblComentrio = new JLabel("Coment\u00E1rio");
 		lblComentrio.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblComentrio.setBounds(10, 156, 120, 14);
 		contentPane.add(lblComentrio);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 181, 384, 48);
+		contentPane.add(scrollPane_1);
+		
+		textArea = new JTextArea();
+		scrollPane_1.setViewportView(textArea);
+		textArea.setLineWrap(true);
 	}
 
 	public Provedor getProvedor() {
