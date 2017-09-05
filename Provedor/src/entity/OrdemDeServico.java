@@ -4,20 +4,26 @@ import java.util.Date;
 
 public class OrdemDeServico {
 
-	private String motivo;
-	private Date data;
-	private Status status;
-	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
+	//responsavel por atribuir o id da OS
 	private static int nextId = 1;
 	private static int getNextId() {return nextId++;}
 	private int id = getNextId();
 	public int getId() {return id;}
+	
+
+	private Cliente clienteDaOS;	//cliente que fez solicitou a abertura da OS
+	private String motivo; 			//motivo/reclamacao do cliente
+	private Date dataCriacao;		//data da cricao da OS
+	private Status status;			//Status atual da OS
+	private Funcionario responsavel;//funcionario que solucionou/fechou a OS 
+	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();	//comentarios feitos ao longo da 'vida' da OS
 
 	public OrdemDeServico(Cliente cliente, String motivo) {
 		super();
+		this.clienteDaOS = cliente;
 		this.motivo = motivo;
 		this.status = Status.ABERTO;
-		this.data = new Date();
+		this.dataCriacao = new Date();
 	}
 
 	public String getMotivo() {
@@ -28,19 +34,18 @@ public class OrdemDeServico {
 		this.motivo = motivo;
 	}
 
-	public Date getData() {
-		return data;
+	public Date getDataCriacao() {
+		return dataCriacao;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataCriacao(Date data) {
+		this.dataCriacao = data;
 	}
-
-
 
 	@Override
 	public String toString() {
-		return "OrdemDeServico [id:" + id + " | status:" + status + " | motivo:" + motivo + " | data:" + data + "]";
+		return "OrdemDeServico [id:" + id + " | status:" + status + " | clienteDaOS:" + clienteDaOS + " | motivo:"
+				+ motivo + " | dataCriacao:" + dataCriacao + " | responsavel:" + responsavel + "]";
 	}
 
 	public Status getStatus() {
@@ -61,10 +66,22 @@ public class OrdemDeServico {
 	}
 
 	public void fecharOrdem() {
-
+		status = status.FECHADO;
 	}
 
 	public void cancelarOrdem() {
 
 	}
+	public Cliente getClienteDaOS() {
+		return clienteDaOS;
+	}
+
+	public Funcionario getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Funcionario responsavel) {
+		this.responsavel = responsavel;
+	}
+
 }

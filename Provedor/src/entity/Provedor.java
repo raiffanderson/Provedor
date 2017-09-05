@@ -39,7 +39,7 @@ public class Provedor {
 		listaOSs.remove(OS);
 	}
 	
-	private void atualizarStatusOS(OrdemDeServico OS, Status status){
+	public void atualizarStatusOS(OrdemDeServico OS, Status status){
 		OS.setStatus(status);
 	}
 	
@@ -55,10 +55,16 @@ public class Provedor {
 		this.listaOSs = listaOSs;
 	}
 
-	public DefaultListModel getListaOSsModel() {
+	public DefaultListModel getListaOSsModel(boolean onlyOpen) {
 		DefaultListModel listModel = new DefaultListModel();
 		for(OrdemDeServico os: this.getListaOSs()){
-			listModel.addElement(os);
+			if (!onlyOpen){
+				listModel.addElement(os);				
+			}else{
+				if (os.getStatus().equals(Status.ABERTO)){
+					listModel.addElement(os);
+				}
+			}
 		}
 		return listModel;
 	}

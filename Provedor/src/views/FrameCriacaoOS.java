@@ -26,13 +26,13 @@ import javax.swing.JTextArea;
 public class FrameCriacaoOS extends JFrame {
 
 	private JPanel contentPane;
-	private Provedor provedor = new Provedor();
-	private DefaultListModel listModel;
-	private JList list;
-	private JScrollPane scrollPane;
-	FrameCriacaoCliente frameCriaCliente = new FrameCriacaoCliente();
-	private JTextArea textArea;
+	private DefaultListModel listModel; 				//Model que vai ser consumido pela Jlist de clientes
+	private JTextArea textAreaComentario;				//Comentario que vai inserido na OS
+	private JList listClientes;							//jList responsavel por exibir os clientes
+	private JScrollPane scrollPaneClientes;				//scroolpanel que circunda a Jlist dos clientes
 
+	private Provedor provedor = new Provedor();
+	FrameCriacaoCliente frameCriaCliente = new FrameCriacaoCliente();
 	/**
 	 * Launch the application.
 	 */
@@ -69,13 +69,13 @@ public class FrameCriacaoOS extends JFrame {
 		lblClientes.setBounds(10, 11, 84, 33);
 		contentPane.add(lblClientes);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 40, 230, 89);
-		contentPane.add(scrollPane);
+		scrollPaneClientes = new JScrollPane();
+		scrollPaneClientes.setBounds(10, 40, 230, 89);
+		contentPane.add(scrollPaneClientes);
 		
 		listModel = provedor.getListaClientesModel();
-		list = new JList(listModel);
-		scrollPane.setViewportView(list);
+		listClientes = new JList(listModel);
+		scrollPaneClientes.setViewportView(listClientes);
 		
 		JButton btnNovoCliente = new JButton("Novo Cliente");
 		btnNovoCliente.addActionListener(new ActionListener() {
@@ -85,21 +85,21 @@ public class FrameCriacaoOS extends JFrame {
 				dispose();
 			}
 		});
-		btnNovoCliente.setBounds(281, 54, 113, 23);
+		btnNovoCliente.setBounds(281, 40, 113, 23);
 		contentPane.add(btnNovoCliente);
 
 		JButton btnNewButton = new JButton("Criar OS");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FramePrincipal frmPrincipal = new FramePrincipal();
-				provedor.criaOS((Cliente) list.getSelectedValue(),textArea.getText());
+				provedor.criaOS((Cliente) listClientes.getSelectedValue(),textAreaComentario.getText());
 				frmPrincipal.setProvedor(provedor);
 				frmPrincipal.updateListOS();
 				frmPrincipal.getFramePrincipal().setVisible(true);
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(281, 88, 113, 23);
+		btnNewButton.setBounds(281, 74, 113, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblComentrio = new JLabel("Coment\u00E1rio");
@@ -111,9 +111,22 @@ public class FrameCriacaoOS extends JFrame {
 		scrollPane_1.setBounds(10, 181, 384, 48);
 		contentPane.add(scrollPane_1);
 		
-		textArea = new JTextArea();
-		scrollPane_1.setViewportView(textArea);
-		textArea.setLineWrap(true);
+		textAreaComentario = new JTextArea();
+		scrollPane_1.setViewportView(textAreaComentario);
+		textAreaComentario.setLineWrap(true);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FramePrincipal frmPrincipal = new FramePrincipal();
+				frmPrincipal.setProvedor(provedor);
+				frmPrincipal.updateListOS();
+				frmPrincipal.getFramePrincipal().setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(281, 108, 113, 23);
+		contentPane.add(btnVoltar);
 	}
 
 	public Provedor getProvedor() {
@@ -125,7 +138,7 @@ public class FrameCriacaoOS extends JFrame {
 	}
 	
 	public void updateListClientes() {
-		list.setModel(provedor.getListaClientesModel());
-		scrollPane.updateUI();
+		listClientes.setModel(provedor.getListaClientesModel());
+		scrollPaneClientes.updateUI();
 	}
 }

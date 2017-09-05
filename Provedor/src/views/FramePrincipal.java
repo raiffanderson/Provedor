@@ -20,16 +20,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JRadioButton;
+import java.awt.Window.Type;
 
 public class FramePrincipal {
 
 	private JFrame framePrincipal;
-	private Provedor provedor = new Provedor();
-	DefaultListModel listModel = new DefaultListModel();
-	private FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
-	JList list;
-	JScrollPane scrollPane_1;
+	DefaultListModel listModelOSs = new DefaultListModel();			//Model que vai ser consumido pela Jlist de OSs
+	JList jListOSs = new JList();													//jList responsavel por exibir as OSs
+	JScrollPane scrollPaneOSs;										//scroolpanel que circunda a Jlist das OSs
 
+	private Provedor provedor = new Provedor();
+	private FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
+	protected boolean onlyOpen = false;							//Flag responsavel por setar se as OS mostradas vão ser todas ou apenas as em status aberto
 	/**
 	 * Launch the application.
 	 */
@@ -61,65 +65,78 @@ public class FramePrincipal {
 		getFramePrincipal().setResizable(false);
 		getFramePrincipal().setFont(new Font("Bodoni MT Condensed", Font.BOLD, 14));
 		getFramePrincipal().setTitle("PROVEDOR");
-		getFramePrincipal().setBounds(100, 100, 767, 400);
+		getFramePrincipal().setBounds(100, 100, 748, 320);
 		getFramePrincipal().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFramePrincipal().getContentPane().setLayout(null);
 
-		JLabel lblOrdensDeServio = new JLabel("Ordem De Servi\u00E7o");
+		JLabel lblOrdensDeServio = new JLabel("Ordens De Servi\u00E7o");
 		lblOrdensDeServio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOrdensDeServio.setFont(new Font("Courier New", Font.BOLD, 24));
-		lblOrdensDeServio.setBounds(288, 37, 261, 53);
+		lblOrdensDeServio.setBounds(273, 0, 261, 53);
 		getFramePrincipal().getContentPane().add(lblOrdensDeServio);
 
-		// JButton btnAtualizar = new JButton("Alterar");
-		// btnAtualizar.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent arg0) {
-
-		// }
-		// });
-		// btnAtualizar.setBounds(517, 57, 118, 23);
-		// framePrincipal.getContentPane().add(btnAtualizar);
-
-		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(134, 100, 609, 200);
-		getFramePrincipal().getContentPane().add(scrollPane_1);
+		scrollPaneOSs = new JScrollPane();
+		scrollPaneOSs.setBounds(119, 63, 609, 200);
+		getFramePrincipal().getContentPane().add(scrollPaneOSs);
 
 		this.frameCriaOS.setProvedor(provedor);
 		
-		listModel = getProvedor().getListaOSsModel();
-		list = new JList(listModel);
-		scrollPane_1.setViewportView(list);
-
-		// provedor.criaOS(new Cliente(28, 654, 1894, Sexo.MASCULINO, 0,
-		// null),"Inadimplencia");
+		updateListOS();
 
 		JButton btnNewButton = new JButton("CRIAR");
+		btnNewButton.setToolTipText("Cria uma novo OS.");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getFrameCriaOS().setVisible(true);
 				getFrameCriaOS().setProvedor(provedor);
+				getFrameCriaOS().updateListClientes();
 				getFramePrincipal().dispose();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton.setBounds(26, 134, 96, 23);
+		btnNewButton.setBounds(11, 97, 96, 23);
 		getFramePrincipal().getContentPane().add(btnNewButton);
 
-		JButton btnDeletar = new JButton("DELETAR");
+		JButton btnDeletar = new JButton("CANCELAR");
+		btnDeletar.setToolTipText("Cancela um OS.");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				provedor.removeOS((OrdemDeServico) list.getSelectedValue());
+				provedor.atualizarStatusOS((OrdemDeServico) jListOSs.getSelectedValue(),Status.CANCELADO);
 				updateListOS();
 			}
 		});
 		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnDeletar.setBounds(25, 169, 96, 23);
+		btnDeletar.setBounds(10, 132, 96, 23);
 		getFramePrincipal().getContentPane().add(btnDeletar);
 
-		JButton btnAtualizar_1 = new JButton("ALTERAR");
+		JButton btnAtualizar_1 = new JButton("FECHAR");
+		btnAtualizar_1.setToolTipText("Fecha um SO. (Procedimento realizado para informar que a resolu\u00E7\u00E3o do problema foi conclu\u00EDda)");
+		btnAtualizar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				provedor.atualizarStatusOS((OrdemDeServico) jListOSs.getSelectedValue(),Status.FECHADO);
+				updateListOS();
+			}
+		});
 		btnAtualizar_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnAtualizar_1.setBounds(25, 204, 96, 23);
+		btnAtualizar_1.setBounds(10, 167, 96, 23);
 		getFramePrincipal().getContentPane().add(btnAtualizar_1);
+		
+		JRadioButton rdbtnMostrarApenasEm = new JRadioButton("Mostrar apenas em \"Aberto\"");
+		rdbtnMostrarApenasEm.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		rdbtnMostrarApenasEm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnMostrarApenasEm.isSelected()){
+					onlyOpen = true;
+				}
+				else{
+					onlyOpen = false;
+				}
+				updateListOS();
+			}
+		});
+		rdbtnMostrarApenasEm.setHorizontalAlignment(SwingConstants.RIGHT);
+		rdbtnMostrarApenasEm.setBounds(554, 264, 174, 23);
+		framePrincipal.getContentPane().add(rdbtnMostrarApenasEm);
 
 	}
 
@@ -149,7 +166,7 @@ public class FramePrincipal {
 	}
 
 	public void updateListOS() {
-		list.setModel(provedor.getListaOSsModel());
-		scrollPane_1.updateUI();
+		jListOSs.setModel(provedor.getListaOSsModel(onlyOpen));
+		scrollPaneOSs.setViewportView(jListOSs);
 	}
 }

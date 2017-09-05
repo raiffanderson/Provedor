@@ -10,5 +10,4 @@ public enum Status {
 		this.status = status;
 	}
 	
-	
 }

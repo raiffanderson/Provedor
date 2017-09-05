@@ -99,6 +99,7 @@ public class FrameCriacaoCliente extends JFrame {
 		contentPane.add(lblCadastroDeCliente);
 
 		JButton btnCadastrat = new JButton("Cadastrar");
+		btnCadastrat.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnCadastrat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
@@ -111,8 +112,22 @@ public class FrameCriacaoCliente extends JFrame {
 				dispose();
 			}
 		});
-		btnCadastrat.setBounds(217, 170, 104, 23);
+		btnCadastrat.setBounds(248, 170, 86, 23);
 		contentPane.add(btnCadastrat);
+		
+		JButton btnNewButton = new JButton("Voltar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
+				frameCriaOS.setProvedor(provedor);
+				frameCriaOS.updateListClientes();
+				frameCriaOS.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnNewButton.setBounds(180, 170, 65, 23);
+		contentPane.add(btnNewButton);
 	}
 
 	public Provedor getProvedor() {
