@@ -31,8 +31,8 @@ public class Cliente extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Cliente [tipoPlano:" + tipoPlano + " | IdCliente:" + IdCliente + " | getRg():" + getRg()
-				+ " | getCpf():" + getCpf() + " | getSexo():" + getSexo() + " | getNome():" + getNome() + "]";
+		return "Cliente [IdCliente:" + IdCliente + " | tipoPlano:" + tipoPlano + " | getNome():" + getNome()
+				+ " | getRg():" + getRg() + " | getCpf():" + getCpf() + " | getSexo():" + getSexo() + "]";
 	}
 
 }

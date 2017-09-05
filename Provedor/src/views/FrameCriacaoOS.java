@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.ScrollPane;
 
 import javax.swing.AbstractButton;
@@ -22,6 +23,14 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.JToggleButton;
+import javax.swing.JEditorPane;
+import java.awt.Panel;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.ImageIcon;
 
 public class FrameCriacaoOS extends JFrame {
 
@@ -57,8 +66,9 @@ public class FrameCriacaoOS extends JFrame {
 		setTitle("PROVEDOR - Criar Ordem De Servi\u00E7o");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 419, 279);
+		setBounds(100, 100, 577, 320);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -70,14 +80,17 @@ public class FrameCriacaoOS extends JFrame {
 		contentPane.add(lblClientes);
 		
 		scrollPaneClientes = new JScrollPane();
-		scrollPaneClientes.setBounds(10, 40, 230, 89);
+		scrollPaneClientes.setBounds(10, 40, 541, 101);
 		contentPane.add(scrollPaneClientes);
 		
 		listModel = provedor.getListaClientesModel();
 		listClientes = new JList(listModel);
 		scrollPaneClientes.setViewportView(listClientes);
 		
-		JButton btnNovoCliente = new JButton("Novo Cliente");
+		JButton btnNovoCliente = new JButton(" Novo Cliente");
+		btnNovoCliente.setIcon(new ImageIcon((this.getClass().getResource("/newUser2.png"))));
+		btnNovoCliente.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnNovoCliente.setBackground(SystemColor.control);
 		btnNovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frameCriaCliente.setVisible(true);
@@ -85,10 +98,13 @@ public class FrameCriacaoOS extends JFrame {
 				dispose();
 			}
 		});
-		btnNovoCliente.setBounds(281, 40, 113, 23);
+		btnNovoCliente.setBounds(431, 152, 120, 38);
 		contentPane.add(btnNovoCliente);
 
-		JButton btnNewButton = new JButton("Criar OS");
+		JButton btnNewButton = new JButton("     Criar OS");
+		btnNewButton.setIcon(new ImageIcon((this.getClass().getResource("/newTask.png"))));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnNewButton.setBackground(SystemColor.control);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FramePrincipal frmPrincipal = new FramePrincipal();
@@ -99,7 +115,7 @@ public class FrameCriacaoOS extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(281, 74, 113, 23);
+		btnNewButton.setBounds(431, 192, 120, 38);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblComentrio = new JLabel("Coment\u00E1rio");
@@ -108,14 +124,17 @@ public class FrameCriacaoOS extends JFrame {
 		contentPane.add(lblComentrio);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 181, 384, 48);
+		scrollPane_1.setBounds(10, 181, 384, 89);
 		contentPane.add(scrollPane_1);
 		
 		textAreaComentario = new JTextArea();
 		scrollPane_1.setViewportView(textAreaComentario);
 		textAreaComentario.setLineWrap(true);
 		
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new JButton("           Voltar");
+		btnVoltar.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnVoltar.setBackground(SystemColor.control);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FramePrincipal frmPrincipal = new FramePrincipal();
@@ -125,7 +144,7 @@ public class FrameCriacaoOS extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(281, 108, 113, 23);
+		btnVoltar.setBounds(431, 232, 120, 38);
 		contentPane.add(btnVoltar);
 	}
 

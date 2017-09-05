@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,9 @@ import javax.swing.JComboBox;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButton;
 import java.awt.Window.Type;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class FramePrincipal {
 
@@ -63,20 +67,20 @@ public class FramePrincipal {
 	private void initialize() {
 		setFramePrincipal(new JFrame());
 		getFramePrincipal().setResizable(false);
-		getFramePrincipal().setFont(new Font("Bodoni MT Condensed", Font.BOLD, 14));
+		getFramePrincipal().setFont(new Font("Bodoni MT Condensed", Font.BOLD, 16));
 		getFramePrincipal().setTitle("PROVEDOR");
-		getFramePrincipal().setBounds(100, 100, 748, 320);
+		getFramePrincipal().setBounds(100, 100, 750, 320);
 		getFramePrincipal().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFramePrincipal().getContentPane().setLayout(null);
 
 		JLabel lblOrdensDeServio = new JLabel("Ordens De Servi\u00E7o");
+		lblOrdensDeServio.setFont(new Font("Graphik Semibold", Font.PLAIN, 30));
 		lblOrdensDeServio.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOrdensDeServio.setFont(new Font("Courier New", Font.BOLD, 24));
-		lblOrdensDeServio.setBounds(273, 0, 261, 53);
+		lblOrdensDeServio.setBounds(119, 0, 609, 53);
 		getFramePrincipal().getContentPane().add(lblOrdensDeServio);
 
 		scrollPaneOSs = new JScrollPane();
-		scrollPaneOSs.setBounds(119, 63, 609, 200);
+		scrollPaneOSs.setBounds(156, 63, 572, 200);
 		getFramePrincipal().getContentPane().add(scrollPaneOSs);
 
 		this.frameCriaOS.setProvedor(provedor);
@@ -84,6 +88,9 @@ public class FramePrincipal {
 		updateListOS();
 
 		JButton btnNewButton = new JButton("CRIAR");
+		btnNewButton.setIcon(new ImageIcon((this.getClass().getResource("/newUser.png"))));
+		btnNewButton.setIconTextGap(30);
+		btnNewButton.setBackground(SystemColor.control);
 		btnNewButton.setToolTipText("Cria uma novo OS.");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,11 +100,14 @@ public class FramePrincipal {
 				getFramePrincipal().dispose();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton.setBounds(11, 97, 96, 23);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 9));
+		btnNewButton.setBounds(13, 64, 133, 65);
 		getFramePrincipal().getContentPane().add(btnNewButton);
 
 		JButton btnDeletar = new JButton("CANCELAR");
+		btnDeletar.setIcon(new ImageIcon((this.getClass().getResource("/Close2.png"))));
+		btnDeletar.setIconTextGap(15);
+		btnDeletar.setBackground(SystemColor.control);
 		btnDeletar.setToolTipText("Cancela um OS.");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -105,11 +115,14 @@ public class FramePrincipal {
 				updateListOS();
 			}
 		});
-		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnDeletar.setBounds(10, 132, 96, 23);
+		btnDeletar.setFont(new Font("Tahoma", Font.BOLD, 9));
+		btnDeletar.setBounds(13, 131, 133, 65);
 		getFramePrincipal().getContentPane().add(btnDeletar);
 
 		JButton btnAtualizar_1 = new JButton("FECHAR");
+		btnAtualizar_1.setIcon(new ImageIcon((this.getClass().getResource("/ok.png"))));
+		btnAtualizar_1.setIconTextGap(22);
+		btnAtualizar_1.setBackground(SystemColor.control);
 		btnAtualizar_1.setToolTipText("Fecha um SO. (Procedimento realizado para informar que a resolu\u00E7\u00E3o do problema foi conclu\u00EDda)");
 		btnAtualizar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -117,12 +130,13 @@ public class FramePrincipal {
 				updateListOS();
 			}
 		});
-		btnAtualizar_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnAtualizar_1.setBounds(10, 167, 96, 23);
+		btnAtualizar_1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnAtualizar_1.setBounds(13, 198, 133, 65);
 		getFramePrincipal().getContentPane().add(btnAtualizar_1);
 		
 		JRadioButton rdbtnMostrarApenasEm = new JRadioButton("Mostrar apenas em \"Aberto\"");
-		rdbtnMostrarApenasEm.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		rdbtnMostrarApenasEm.setBackground(Color.WHITE);
+		rdbtnMostrarApenasEm.setFont(new Font("Tahoma", Font.BOLD, 10));
 		rdbtnMostrarApenasEm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnMostrarApenasEm.isSelected()){
@@ -146,6 +160,7 @@ public class FramePrincipal {
 
 	public void setFramePrincipal(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
+		framePrincipal.getContentPane().setBackground(Color.WHITE);
 	}
 
 	public FrameCriacaoOS getFrameCriaOS() {
@@ -166,6 +181,7 @@ public class FramePrincipal {
 	}
 
 	public void updateListOS() {
+		jListOSs.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		jListOSs.setModel(provedor.getListaOSsModel(onlyOpen));
 		scrollPaneOSs.setViewportView(jListOSs);
 	}

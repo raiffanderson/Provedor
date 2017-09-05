@@ -12,6 +12,8 @@ import entity.*;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -19,6 +21,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.Window.Type;
 
 public class FrameCriacaoCliente extends JFrame {
 
@@ -48,9 +53,11 @@ public class FrameCriacaoCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameCriacaoCliente() {
+		setTitle("PROVEDOR - Cadastro de Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 360, 243);
+		setBounds(100, 100, 410, 250);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -71,6 +78,7 @@ public class FrameCriacaoCliente extends JFrame {
 		textFieldRG.setColumns(10);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(SystemColor.control);
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		comboBox.setModel(new DefaultComboBoxModel(Sexo.values()));
 		comboBox.setBounds(49, 145, 86, 20);
@@ -85,7 +93,7 @@ public class FrameCriacaoCliente extends JFrame {
 		contentPane.add(lblCpf);
 
 		JLabel lblRg = new JLabel("RG");
-		lblRg.setBounds(10, 115, 46, 14);
+		lblRg.setBounds(10, 118, 46, 14);
 		contentPane.add(lblRg);
 
 		JLabel lblSexo = new JLabel("Sexo");
@@ -99,6 +107,9 @@ public class FrameCriacaoCliente extends JFrame {
 		contentPane.add(lblCadastroDeCliente);
 
 		JButton btnCadastrat = new JButton("Cadastrar");
+		btnCadastrat.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/save.png")));
+		btnCadastrat.setIconTextGap(5);
+		btnCadastrat.setBackground(SystemColor.control);
 		btnCadastrat.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnCadastrat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -112,10 +123,13 @@ public class FrameCriacaoCliente extends JFrame {
 				dispose();
 			}
 		});
-		btnCadastrat.setBounds(248, 170, 86, 23);
+		btnCadastrat.setBounds(267, 170, 117, 30);
 		contentPane.add(btnCadastrat);
 		
 		JButton btnNewButton = new JButton("Voltar");
+		btnNewButton.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnNewButton.setIconTextGap(10);
+		btnNewButton.setBackground(SystemColor.control);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
@@ -126,8 +140,14 @@ public class FrameCriacaoCliente extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnNewButton.setBounds(180, 170, 65, 23);
+		btnNewButton.setBounds(174, 170, 86, 30);
 		contentPane.add(btnNewButton);
+		
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/addUser4.png")));
+		label.setBounds(198, 30, 210, 159);
+		contentPane.add(label);
 	}
 
 	public Provedor getProvedor() {
