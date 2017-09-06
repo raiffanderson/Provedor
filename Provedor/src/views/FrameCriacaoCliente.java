@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import entity.*;
+import persistence.WriteFiles;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -19,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -32,7 +34,7 @@ public class FrameCriacaoCliente extends JFrame {
 	private JTextField textFieldCPF;
 	private JTextField textFieldRG;
 	private Provedor provedor = new Provedor();
-
+	private WriteFiles writer;
 	/**
 	 * Launch the application.
 	 */
@@ -121,6 +123,14 @@ public class FrameCriacaoCliente extends JFrame {
 				frameCriaOS.updateListClientes();
 				frameCriaOS.setVisible(true);
 				dispose();
+				writer = new WriteFiles();
+				writer.setClientes(provedor.getClientes());
+				try {
+					writer.gravaClientes();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnCadastrat.setBounds(267, 170, 117, 30);

@@ -76,7 +76,7 @@ public class Provedor {
 		return clientesModel;
 	}
 
-	private ArrayList<Cliente> getClientes() {
+	public ArrayList<Cliente> getClientes() {
 		return clientes;
 	}
 
