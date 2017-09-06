@@ -15,8 +15,8 @@ public class WriteFiles {
 	SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador_da_data
 	private static final String pathClientes = "files/clientes.txt";
 	private static final String pathOSs = "files/OSs.txt";
-	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-	private ArrayList<OrdemDeServico> OSs ; 
+	private ArrayList<Cliente> clientes;
+	private ArrayList<OrdemDeServico> OSs;
 
 	public void gravaOSs() throws IOException {
 		File fileOSs = new File(pathOSs);
@@ -32,10 +32,10 @@ public class WriteFiles {
 		writer.close();
 		System.out.println(formatDate.format(new Date()) + " - OS adicionada: " + pathOSs);
 	}
-	
+
 	private String montaLinhaOSs(OrdemDeServico os) {
-		return os.getId() + "," + os.getStatus() + "," + os.getClienteDaOS().getIdCliente() + ","
-				+ os.getMotivo() + "," + formatDate.format(os.getDataCriacao()) + "," + os.getResponsavel().getId();
+		return os.getId() + "," + os.getStatus() + "," + os.getClienteDaOS().getIdCliente() + "," + os.getMotivo() + ","
+				+ formatDate.format(os.getDataCriacao());
 	}
 
 	public void gravaClientes() throws IOException {
@@ -77,5 +77,5 @@ public class WriteFiles {
 	public void setOSs(ArrayList<OrdemDeServico> oSs) {
 		this.OSs = oSs;
 	}
-	
+
 }

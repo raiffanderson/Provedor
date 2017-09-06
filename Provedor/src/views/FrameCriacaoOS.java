@@ -186,18 +186,10 @@ public class FrameCriacaoOS extends JFrame {
 	private void gravaSo() {
 		try {
 			writer = new WriteFiles();
-			writer.setOSs(this.provedor.getListaOSs());
+			writer.setOSs(provedor.getListaOSs());
 			writer.gravaOSs();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-//	try {
-//		writer = new WriteFiles();
-//		writer.setClientes(provedor.getClientes());
-//		writer.gravaClientes();
-//	} catch (IOException e) {
-//		e.printStackTrace();
-//	}
-	
 }
