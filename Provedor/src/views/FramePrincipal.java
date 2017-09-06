@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import entity.*;
+import persistence.ReadFiles;
 
 import java.awt.Font;
 import javax.swing.JTable;
@@ -18,6 +19,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
@@ -38,6 +40,7 @@ public class FramePrincipal {
 	private Provedor provedor = new Provedor();
 	private FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
 	protected boolean onlyOpen = false;							//Flag responsavel por setar se as OS mostradas vão ser todas ou apenas as em status aberto
+	private ReadFiles reader;
 	/**
 	 * Launch the application.
 	 */
@@ -85,7 +88,16 @@ public class FramePrincipal {
 
 		this.frameCriaOS.setProvedor(provedor);
 		
+		reader = new ReadFiles();
+		reader.setClientes(provedor.getClientes());
+		try {
+			reader.read();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		updateListOS();
+		
 
 		JButton btnNewButton = new JButton("CRIAR");
 		btnNewButton.setIcon(new ImageIcon((this.getClass().getResource("/newUser.png"))));

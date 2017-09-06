@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import entity.*;
+import persistence.ReadFiles;
 import persistence.WriteFiles;
 
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.awt.event.ActionEvent;
@@ -35,6 +37,8 @@ public class FrameCriacaoCliente extends JFrame {
 	private JTextField textFieldRG;
 	private Provedor provedor = new Provedor();
 	private WriteFiles writer;
+	private ReadFiles reader;
+
 	/**
 	 * Launch the application.
 	 */
@@ -123,19 +127,12 @@ public class FrameCriacaoCliente extends JFrame {
 				frameCriaOS.updateListClientes();
 				frameCriaOS.setVisible(true);
 				dispose();
-				writer = new WriteFiles();
-				writer.setClientes(provedor.getClientes());
-				try {
-					writer.gravaClientes();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				gravaClientes();
 			}
 		});
 		btnCadastrat.setBounds(267, 170, 117, 30);
 		contentPane.add(btnCadastrat);
-		
+
 		JButton btnNewButton = new JButton("Voltar");
 		btnNewButton.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnNewButton.setIconTextGap(10);
@@ -152,7 +149,7 @@ public class FrameCriacaoCliente extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnNewButton.setBounds(174, 170, 86, 30);
 		contentPane.add(btnNewButton);
-		
+
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/addUser4.png")));
@@ -166,5 +163,25 @@ public class FrameCriacaoCliente extends JFrame {
 
 	public void setProvedor(Provedor provedor) {
 		this.provedor = provedor;
+	}
+
+	private void gravaClientes() {
+		try {
+			writer = new WriteFiles();
+			writer.setClientes(provedor.getClientes());
+			writer.gravaClientes();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		reader = new ReadFiles();
+		reader.setClientes(provedor.getClientes());
+		try {
+			reader.read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
