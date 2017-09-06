@@ -29,6 +29,7 @@ import java.awt.Window.Type;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class FramePrincipal {
 
@@ -167,6 +168,7 @@ public class FramePrincipal {
 
 	public void setFramePrincipal(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
+		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("img/help-icon.png"));
 		framePrincipal.getContentPane().setBackground(Color.WHITE);
 	}
 
