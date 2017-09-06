@@ -134,14 +134,14 @@ public class FrameCriacaoCliente extends JFrame {
 		contentPane.add(btnCadastrat);
 
 		JButton btnNewButton = new JButton("Voltar");
-		btnNewButton.setIcon(new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnNewButton.setIcon(
+				new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnNewButton.setIconTextGap(10);
 		btnNewButton.setBackground(SystemColor.control);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
 				frameCriaOS.setProvedor(provedor);
-				frameCriaOS.updateListClientes();
 				frameCriaOS.setVisible(true);
 				dispose();
 			}
@@ -171,16 +171,6 @@ public class FrameCriacaoCliente extends JFrame {
 			writer.setClientes(provedor.getClientes());
 			writer.gravaClientes();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		reader = new ReadFiles();
-		reader.setClientes(provedor.getClientes());
-		try {
-			reader.read();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

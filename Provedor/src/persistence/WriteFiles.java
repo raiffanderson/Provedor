@@ -16,11 +16,11 @@ public class WriteFiles {
 	private static final String pathClientes = "files/clientes.txt";
 	private static final String pathOSs = "files/OSs.txt";
 	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-	private ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>(); 
+	private ArrayList<OrdemDeServico> OSs ; 
 
 	public void gravaOSs() throws IOException {
-		File file = new File(pathOSs);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		File fileOSs = new File(pathOSs);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fileOSs));
 
 		for (OrdemDeServico os : OSs) {
 			writer.write(montaLinhaOSs(os));
@@ -30,18 +30,18 @@ public class WriteFiles {
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Cliente adicionado: " + pathClientes);
+		System.out.println(formatDate.format(new Date()) + " - OS adicionada: " + pathOSs);
 	}
 	
 	private String montaLinhaOSs(OrdemDeServico os) {
 		return os.getId() + "," + os.getStatus() + "," + os.getClienteDaOS().getIdCliente() + ","
-				+ os.getMotivo() + "," + os.getDataCriacao() + "," + os.getResponsavel().getId();
+				+ os.getMotivo() + "," + formatDate.format(os.getDataCriacao()) + "," + os.getResponsavel().getId();
 	}
 
 	public void gravaClientes() throws IOException {
-		File file = new File(pathClientes);
+		File fileClientes = new File(pathClientes);
 		// long begin = System.currentTimeMillis();
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fileClientes));
 
 		for (Cliente cliente : clientes) {
 			writer.write(montaLinhaClientes(cliente));

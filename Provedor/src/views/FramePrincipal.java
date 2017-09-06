@@ -33,14 +33,19 @@ import java.awt.Color;
 public class FramePrincipal {
 
 	private JFrame framePrincipal;
-	DefaultListModel listModelOSs = new DefaultListModel();			//Model que vai ser consumido pela Jlist de OSs
-	JList jListOSs = new JList();													//jList responsavel por exibir as OSs
-	JScrollPane scrollPaneOSs;										//scroolpanel que circunda a Jlist das OSs
+	DefaultListModel listModelOSs = new DefaultListModel(); // Model que vai ser
+															// consumido pela
+															// Jlist de OSs
+	JList jListOSs = new JList(); // jList responsavel por exibir as OSs
+	JScrollPane scrollPaneOSs; // scroolpanel que circunda a Jlist das OSs
 
 	private Provedor provedor = new Provedor();
 	private FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
-	protected boolean onlyOpen = false;							//Flag responsavel por setar se as OS mostradas vão ser todas ou apenas as em status aberto
+	protected boolean onlyOpen = false; // Flag responsavel por setar se as OS
+										// mostradas vão ser todas ou apenas as
+										// em status aberto
 	private ReadFiles reader;
+
 	/**
 	 * Launch the application.
 	 */
@@ -87,17 +92,8 @@ public class FramePrincipal {
 		getFramePrincipal().getContentPane().add(scrollPaneOSs);
 
 		this.frameCriaOS.setProvedor(provedor);
-		
-		reader = new ReadFiles();
-		reader.setClientes(provedor.getClientes());
-		try {
-			reader.read();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 		updateListOS();
-		
 
 		JButton btnNewButton = new JButton("CRIAR");
 		btnNewButton.setIcon(new ImageIcon((this.getClass().getResource("/newUser.png"))));
@@ -108,7 +104,6 @@ public class FramePrincipal {
 			public void actionPerformed(ActionEvent e) {
 				getFrameCriaOS().setVisible(true);
 				getFrameCriaOS().setProvedor(provedor);
-				getFrameCriaOS().updateListClientes();
 				getFramePrincipal().dispose();
 			}
 		});
@@ -123,7 +118,7 @@ public class FramePrincipal {
 		btnDeletar.setToolTipText("Cancela um OS.");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				provedor.atualizarStatusOS((OrdemDeServico) jListOSs.getSelectedValue(),Status.CANCELADO);
+				provedor.atualizarStatusOS((OrdemDeServico) jListOSs.getSelectedValue(), Status.CANCELADO);
 				updateListOS();
 			}
 		});
@@ -135,26 +130,26 @@ public class FramePrincipal {
 		btnAtualizar_1.setIcon(new ImageIcon((this.getClass().getResource("/ok.png"))));
 		btnAtualizar_1.setIconTextGap(22);
 		btnAtualizar_1.setBackground(SystemColor.control);
-		btnAtualizar_1.setToolTipText("Fecha um SO. (Procedimento realizado para informar que a resolu\u00E7\u00E3o do problema foi conclu\u00EDda)");
+		btnAtualizar_1.setToolTipText(
+				"Fecha um SO. (Procedimento realizado para informar que a resolu\u00E7\u00E3o do problema foi conclu\u00EDda)");
 		btnAtualizar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				provedor.atualizarStatusOS((OrdemDeServico) jListOSs.getSelectedValue(),Status.FECHADO);
+				provedor.atualizarStatusOS((OrdemDeServico) jListOSs.getSelectedValue(), Status.FECHADO);
 				updateListOS();
 			}
 		});
 		btnAtualizar_1.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnAtualizar_1.setBounds(13, 198, 133, 65);
 		getFramePrincipal().getContentPane().add(btnAtualizar_1);
-		
+
 		JRadioButton rdbtnMostrarApenasEm = new JRadioButton("Mostrar apenas em \"Aberto\"");
 		rdbtnMostrarApenasEm.setBackground(Color.WHITE);
 		rdbtnMostrarApenasEm.setFont(new Font("Tahoma", Font.BOLD, 10));
 		rdbtnMostrarApenasEm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnMostrarApenasEm.isSelected()){
+				if (rdbtnMostrarApenasEm.isSelected()) {
 					onlyOpen = true;
-				}
-				else{
+				} else {
 					onlyOpen = false;
 				}
 				updateListOS();
