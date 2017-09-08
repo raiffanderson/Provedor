@@ -142,6 +142,7 @@ public class FrameCriacaoCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				FrameCriacaoOS frameCriaOS = new FrameCriacaoOS();
 				frameCriaOS.setProvedor(provedor);
+				frameCriaOS.updateListClientes();
 				frameCriaOS.setVisible(true);
 				dispose();
 			}
