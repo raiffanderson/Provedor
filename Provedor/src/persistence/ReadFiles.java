@@ -53,7 +53,10 @@ public class ReadFiles {
 	}
 
 	public void setClientes(ArrayList<Cliente> arrayClientes) {
-		this.clientes = arrayClientes; 		
+		Cliente reset = new Cliente(nome, cpf, rg, sexo, dtNascimento, plano);
+		reset.setNextIdCliente(1);
+		this.clientes = arrayClientes;
+		this.clientes.clear();	
 	}
 
 }

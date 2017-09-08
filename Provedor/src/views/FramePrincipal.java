@@ -92,7 +92,7 @@ public class FramePrincipal {
 		scrollPaneOSs.setBounds(156, 63, 572, 200);
 		getFramePrincipal().getContentPane().add(scrollPaneOSs);
 
-		this.frameCriaOS.setProvedor(provedor);
+//		this.frameCriaOS.setProvedor(provedor);
 
 		updateListOS();
 
@@ -103,8 +103,10 @@ public class FramePrincipal {
 		btnNewButton.setToolTipText("Cria uma novo OS.");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getFrameCriaOS().setVisible(true);
-				getFrameCriaOS().setProvedor(provedor);
+				FrameCriacaoOS frameCriaOS = getFrameCriaOS();
+				frameCriaOS.setProvedor(provedor);
+				frameCriaOS.carregaClientes();
+				frameCriaOS.setVisible(true);
 				getFramePrincipal().dispose();
 			}
 		});

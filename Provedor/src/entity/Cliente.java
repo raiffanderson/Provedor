@@ -35,4 +35,8 @@ public class Cliente extends Pessoa{
 		+ " | Rg: " + getRg() + " | Sexo: " + getSexo() +  " | Plano: " + tipoPlano;
 	}
 
+	public static void setNextIdCliente(int nextIdCliente) {
+		Cliente.nextIdCliente = nextIdCliente;
+	}
+
 }

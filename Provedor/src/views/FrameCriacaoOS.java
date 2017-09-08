@@ -92,7 +92,7 @@ public class FrameCriacaoOS extends JFrame {
 		scrollPaneClientes.setBounds(10, 40, 541, 101);
 		contentPane.add(scrollPaneClientes);
 
-		carregaClientes();
+//		carregaClientes();
 		updateListClientes();
 
 		JButton btnNovoCliente = new JButton(" Novo Cliente");
@@ -121,7 +121,7 @@ public class FrameCriacaoOS extends JFrame {
 				frmPrincipal.updateListOS();
 				frmPrincipal.getFramePrincipal().setVisible(true);
 				dispose();
-				gravaSo();
+				gravaOS();
 			}
 		});
 		btnNewButton.setBounds(431, 192, 120, 38);
@@ -172,7 +172,7 @@ public class FrameCriacaoOS extends JFrame {
 		scrollPaneClientes.setViewportView(listClientes);
 	}
 
-	private void carregaClientes() {
+	void carregaClientes() {
 		reader = new ReadFiles();
 		reader.setClientes(provedor.getClientes());
 		try {
@@ -181,9 +181,10 @@ public class FrameCriacaoOS extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		updateListClientes();
 	}
 	
-	private void gravaSo() {
+	private void gravaOS() {
 		try {
 			writer = new WriteFiles();
 			writer.setOSs(provedor.getListaOSs());
