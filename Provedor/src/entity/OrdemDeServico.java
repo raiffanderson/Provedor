@@ -11,11 +11,11 @@ public class OrdemDeServico {
 	public int getId() {return id;}
 	
 
-	private Cliente clienteDaOS;	//cliente que fez solicitou a abertura da OS
+	private Cliente clienteDaOS;	//cliente que solicitou a abertura da OS
 	private String motivo; 			//motivo/reclamacao do cliente
 	private Date dataCriacao;		//data da cricao da OS
 	private Status status;			//Status atual da OS
-	private Funcionario responsavel;//funcionario que solucionou/fechou a OS 
+	private Funcionario responsavel;//funcionario que abriu/fechou a OS 
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();	//comentarios feitos ao longo da 'vida' da OS
 
 	public OrdemDeServico(Cliente cliente, String motivo) {

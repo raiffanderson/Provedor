@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Funcionario extends Pessoa{
 
-	String cargo;
+	private String cargo;
 	
 	//responsavel por atribuir o id da OS
 	private static int nextId = 1;
