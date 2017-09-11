@@ -31,8 +31,12 @@ public class Cliente extends Pessoa{
 
 	@Override
 	public String toString() {
-		return " Id: " + IdCliente + " - Nome: " + getNome() + " | Cpf: " + getCpf() 
-		+ " | Rg: " + getRg() + " | Sexo: " + getSexo() +  " | Plano: " + tipoPlano;
+		return String.format(" Id: %03d ", IdCliente) 
+				+ String.format( " | Cpf: %05d", getCpf()) 
+				+ String.format( " | Rg: %05d", getRg())  
+				+ " | Sexo: " + getSexo() 
+				+ " | Plano: " + tipoPlano
+		+ "- Nome: " + getNome(); 
 	}
 
 	public static void setNextIdCliente(int nextIdCliente) {
