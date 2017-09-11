@@ -10,7 +10,7 @@ public class Cliente extends Pessoa{
 	private int IdCliente = getNextIdCliente();
 	public int getIdCliente() {return IdCliente;}
 	
-	String tipoPlano;
+	private String tipoPlano;
 
 	public Cliente(String nome, int rg, int cpf, Sexo sexo, Date nascimento, String tipoPlano) {
 		super(nome, rg, cpf, sexo, nascimento);
