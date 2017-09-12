@@ -40,6 +40,7 @@ public class Provedor {
 	}
 	
 	public void atualizarStatusOS(OrdemDeServico OS, Status status){
+		Pessoa func = new Funcionario("Funcionario - 1",1111,2222,Sexo.MASCULINO,new Date());
 		OS.setStatus(status);
 	}
 	

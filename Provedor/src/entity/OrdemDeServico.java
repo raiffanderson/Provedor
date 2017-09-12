@@ -44,8 +44,8 @@ public class OrdemDeServico {
 
 	@Override
 	public String toString() {
-		return "OrdemDeServico [id:" + id + " | status:" + status + " | clienteDaOS:" + clienteDaOS + " | motivo:"
-				+ motivo + " | dataCriacao:" + dataCriacao + " | responsavel:" + responsavel + "]";
+		return "OrdemDeServico [id:" + id + " | status:" + status + " | motivo:" + motivo + " | dataCriacao:"
+				+ dataCriacao + "]";
 	}
 
 	public Status getStatus() {

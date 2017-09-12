@@ -24,8 +24,10 @@ public class Funcionario extends Pessoa{
 		this.cargo = cargo;
 	}
 
+	@Override
 	public String toString() {
-		return "Funcionario [cargo=" + cargo + "]";
+		return "Funcionario [cargo:" + cargo + " | id:" + id + " | getNome():" + getNome() + " | getSexo():" + getSexo()
+				+ " | getRg():" + getRg() + " | getCpf():" + getCpf() + " | getNascimento():" + getNascimento() + "]";
 	}
 	
 }
