@@ -2,11 +2,11 @@ package entity;
 
 public enum Status {
 	
-	ABERTO(1), FECHADO(2), CANCELADO(3);
+	ABERTO("A"), FECHADO("F"), CANCELADO("C");
 	
-	public int status;
+	public String status;
 
-	private Status(int status) {
+	private Status(String status) {
 		this.status = status;
 	}
 	

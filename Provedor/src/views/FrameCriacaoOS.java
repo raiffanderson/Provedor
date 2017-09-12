@@ -176,7 +176,7 @@ public class FrameCriacaoOS extends JFrame {
 		reader = new ReadFiles();
 		reader.setClientes(provedor.getClientes());
 		try {
-			reader.read();
+			reader.readClientes();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

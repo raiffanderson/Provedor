@@ -26,7 +26,7 @@ public class ReadFiles {
 	ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>();
 
-	public void read() throws IOException {
+	public void readClientes() throws IOException {
 		FileReader fileReader = new FileReader(fileClientes);
 		BufferedReader reader = new BufferedReader(fileReader);
 		String data = null;
