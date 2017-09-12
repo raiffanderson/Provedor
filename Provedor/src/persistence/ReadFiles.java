@@ -62,7 +62,7 @@ public class ReadFiles {
 	}
 	
 	//para ler as OSs e armazena-las
-	public void readOSs() throws IOException {
+	/*public void readOSs() throws IOException {
 		FileReader fileReader = new FileReader(fileOSs);
 		BufferedReader reader = new BufferedReader(fileReader);
 		String data = null;
@@ -83,6 +83,6 @@ public class ReadFiles {
 		}
 		fileReader.close();
 		reader.close();
-	}
+	}*/
 	
 }

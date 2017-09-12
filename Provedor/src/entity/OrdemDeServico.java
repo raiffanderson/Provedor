@@ -19,10 +19,10 @@ public class OrdemDeServico {
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();	//comentarios feitos ao longo da 'vida' da OS
 
 	//acrescentado String motivo e Date dtNascimento
-	public OrdemDeServico(Cliente cliente, String motivo, String status, Date dtNascimento) {
+	public OrdemDeServico(Cliente cliente, String status) {
 		super();
 		this.clienteDaOS = cliente;
-		this.motivo = motivo;
+		//this.motivo = motivo;
 		this.status = Status.ABERTO;
 		this.dataCriacao = new Date();
 	}
