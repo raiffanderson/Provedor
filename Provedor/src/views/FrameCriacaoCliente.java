@@ -134,8 +134,7 @@ public class FrameCriacaoCliente extends JFrame {
 		contentPane.add(btnCadastrat);
 
 		JButton btnNewButton = new JButton("Voltar");
-		btnNewButton.setIcon(
-				new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnNewButton.setIcon(new ImageIcon((this.getClass().getResource("/back-icon.png"))));
 		btnNewButton.setIconTextGap(10);
 		btnNewButton.setBackground(SystemColor.control);
 		btnNewButton.addActionListener(new ActionListener() {

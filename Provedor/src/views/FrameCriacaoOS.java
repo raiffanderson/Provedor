@@ -140,9 +140,8 @@ public class FrameCriacaoOS extends JFrame {
 		scrollPane_1.setViewportView(textAreaComentario);
 		textAreaComentario.setLineWrap(true);
 
-		JButton btnVoltar = new JButton("           Voltar");
-		btnVoltar.setIcon(
-				new ImageIcon(FrameCriacaoOS.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		JButton btnVoltar = new JButton("        Voltar");
+		btnVoltar.setIcon(new ImageIcon((this.getClass().getResource("/back-icon (1).png"))));
 		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnVoltar.setBackground(SystemColor.control);
 		btnVoltar.addActionListener(new ActionListener() {
