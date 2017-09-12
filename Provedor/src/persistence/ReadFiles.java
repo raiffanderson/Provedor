@@ -70,7 +70,7 @@ public class ReadFiles {
 		BufferedReader reader = new BufferedReader(fileReader);
 		String data = null;
 		while ((data = reader.readLine()) != null) {
-			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador  da data
+			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador  da data
 			formatDate.format(new Date());
 			String[] arrayLinha = data.split(",");
 			idOS = Integer.parseInt(arrayLinha[0]);
@@ -83,8 +83,10 @@ public class ReadFiles {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			OrdemDeServico os = new OrdemDeServico(buscaCliente(idCliente),status, motivo);
+			os.setDataCriacao(dtCriacao);
+			OSs.add(os);
 			
-			OSs.add(new OrdemDeServico(buscaCliente(idCliente),status, motivo));
 		}
 		fileReader.close();
 		reader.close();

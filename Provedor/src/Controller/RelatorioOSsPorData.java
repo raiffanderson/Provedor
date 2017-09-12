@@ -21,7 +21,6 @@ public class RelatorioOSsPorData extends Relatorio {
 	ArrayList<OrdemDeServico> abertas = new ArrayList<OrdemDeServico>();
 	ArrayList<OrdemDeServico> fechadas = new ArrayList<OrdemDeServico>();
 	ArrayList<OrdemDeServico> canceladas = new ArrayList<OrdemDeServico>();
-	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador_da_data
 	String pathRelatorioOSsPorData = "files/RelatorioOSsPorData.txt";
 
 	// Map<integer, string=""> mapaNomes = new HashMap<integer, string="">();
@@ -50,7 +49,7 @@ public class RelatorioOSsPorData extends Relatorio {
 			mes = mes.substring(3, 5);
 
 			Integer quantidade = mapaMeses.get(mes);
-
+			//System.out.println(mapaMeses.get(mes));
 			if (quantidade == null) {
 				mapaMeses.put(mes, new Integer(1));
 			} else {
