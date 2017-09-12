@@ -16,36 +16,12 @@ import persistence.WriteFiles;
 public abstract class Relatorio {
 
 	ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>();
 	ReadFiles leitor = new ReadFiles();
-	SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador_da_data
-	String pathRelatorioDefault = "files/RelatorioPadrao.txt";
-
+	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador_da_data
+	
 	public void geraRelatorio() throws IOException{
 		
-		try {
-			leitor = new ReadFiles();
-			leitor.setClientes(clientes);
-			leitor.readClientes();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		File fileClientes = new File(pathRelatorioDefault);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioDefault));
+	}
 
-		for (Cliente cliente : clientes) {
-			writer.write(montaLinhaClientes(cliente));
-			writer.newLine();
-		}
-		// Criando o conteúdo do arquivo
-		writer.flush();
-		// Fechando conexão e escrita do arquivo.
-		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Relatório padrão gerado: " + pathRelatorioDefault);
-	
-	}
-	private String montaLinhaClientes(Cliente cliente) {
-		return cliente.toString();
-	}
-	
 }

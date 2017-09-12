@@ -1,0 +1,14 @@
+-----------------------------------------------------------------------------------
+----------------------------CLIENTES DO SEXO MASCULINO: 04-------------------------
+-----------------------------------------------------------------------------------
+ Id: 001  | Cpf: 00147 | Rg: 00123 | Sexo: MASCULINO | Plano: Basico- Nome: roberto
+ Id: 002  | Cpf: 00002 | Rg: 00002 | Sexo: MASCULINO | Plano: Basico- Nome: Raiff
+ Id: 003  | Cpf: 00003 | Rg: 00003 | Sexo: MASCULINO | Plano: Basico- Nome: Douglas
+ Id: 004  | Cpf: 00004 | Rg: 00004 | Sexo: MASCULINO | Plano: Basico- Nome: Denis
+
+
+-----------------------------------------------------------------------------------
+----------------------------CLIENTES DO SEXO FEMININO: 02--------------------------
+-----------------------------------------------------------------------------------
+ Id: 005  | Cpf: 00005 | Rg: 00005 | Sexo: FEMININO | Plano: Basico- Nome: Roberta
+ Id: 006  | Cpf: 00006 | Rg: 00006 | Sexo: FEMININO | Plano: Basico- Nome: Leticia

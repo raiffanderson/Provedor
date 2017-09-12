@@ -12,14 +12,14 @@ import entity.Cliente;
 import entity.Sexo;
 import persistence.ReadFiles;
 
-public class RelatorioPorSexo extends Relatorio {
+public class RelatorioClientesPorSexo extends Relatorio {
 
 	ArrayList<Cliente> masculino = new ArrayList<Cliente>();
 	ArrayList<Cliente> feminino = new ArrayList<Cliente>();
 	SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador_da_data
-	String pathRelatorioPorSexo = "files/RelatorioPorSexo.txt";
+	String pathRelatorioClientesPorSexo = "files/RelatorioDeClientesPorSexo.txt";
 
-	public RelatorioPorSexo() {
+	public RelatorioClientesPorSexo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,8 +35,8 @@ public class RelatorioPorSexo extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioPorSexo);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioPorSexo));
+		File fileClientes = new File(pathRelatorioClientesPorSexo);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioClientesPorSexo));
 
 		for (Cliente cliente : clientes) {
 			if (cliente.getSexo().equals(Sexo.MASCULINO)) {
@@ -46,18 +46,28 @@ public class RelatorioPorSexo extends Relatorio {
 			}
 		}
 
-		writer.write("---------------------------------------------------------");
-		writer.write("-------------------CLIENTES SEXO: M----------------------");
-		writer.write("---------------------------------------------------------");
+		writer.write("-----------------------------------------------------------------------------------");
+		writer.newLine();
+		writer.write(
+				String.format("----------------------------CLIENTES DO SEXO MASCULINO: %02d-------------------------",
+						masculino.size()));
+		writer.newLine();
+		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
 		for (Cliente clienteMasculino : masculino) {
 			writer.write(clienteMasculino.toString());
 			writer.newLine();
 		}
 
-		writer.write("---------------------------------------------------------");
-		writer.write("-------------------CLIENTES SEXO: F----------------------");
-		writer.write("---------------------------------------------------------");
+		writer.newLine();
+		writer.newLine();
+		writer.write("-----------------------------------------------------------------------------------");
+		writer.newLine();
+		writer.write(
+				String.format("----------------------------CLIENTES DO SEXO FEMININO: %02d--------------------------",
+						feminino.size()));
+		writer.newLine();
+		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
 		for (Cliente clienteFeminino : feminino) {
 			writer.write(clienteFeminino.toString());
@@ -68,7 +78,7 @@ public class RelatorioPorSexo extends Relatorio {
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Relatorio p/Sexo gerado: " + pathRelatorioPorSexo);
+		System.out.println(formatDate.format(new Date()) + " - Relatorio de Clientes p/Sexo gerado: " + pathRelatorioClientesPorSexo);
 
 	}
 

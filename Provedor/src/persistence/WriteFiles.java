@@ -12,7 +12,7 @@ import entity.Cliente;
 import entity.OrdemDeServico;
 
 public class WriteFiles {
-	SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador_da_data
+	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador_da_data
 	private static final String pathClientes = "files/clientes.txt";
 	private static final String pathOSs = "files/OSs.txt";
 	private ArrayList<Cliente> clientes;

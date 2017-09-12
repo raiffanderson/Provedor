@@ -1,0 +1,35 @@
+-----------------------------------------------------------------------------------
+------------------RELATÓRIO DE ORDENS DE SERVIÇO (PADRÃO)--------------------------
+-----------------------------------------------------------------------------------
+ORDEM DE SERVIÇOS ABERTAS:              05
+ORDEM DE SERVIÇOS FECHADAS:             03
+ORDEM DE SERVIÇOS CANCELADAS:           01
+TOTAL DE ORDEM DE SERVIÇOS PROCESSADAS: 09
+
+
+-----------------------------------------------------------------------------------
+-----------------------------------DETALHAMENTO------------------------------------
+-----------------------------------------------------------------------------------
+ORDEM DE SERVIÇOS ABERTAS: 05
+-----------------------------------------------------------------------------------
+OrdemDeServico [id:1 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:2 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:4 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:7 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:9 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+-----------------------------------------------------------------------------------
+ORDEM DE SERVIÇOS FECHADAS: 03
+-----------------------------------------------------------------------------------
+OrdemDeServico [id:1 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:2 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:4 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:7 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:9 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+-----------------------------------------------------------------------------------
+ORDEM DE SERVIÇOS CANCELADAS: 01
+-----------------------------------------------------------------------------------
+OrdemDeServico [id:1 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:2 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:4 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:7 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
+OrdemDeServico [id:9 | status:ABERTO | motivo: | dataCriacao:Tue Sep 12 17:00:36 GMT-03:00 2017]
