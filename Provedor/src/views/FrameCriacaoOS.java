@@ -121,7 +121,7 @@ public class FrameCriacaoOS extends JFrame {
 				frmPrincipal.updateListOS();
 				frmPrincipal.getFramePrincipal().setVisible(true);
 				dispose();
-				gravaOS();
+//				gravaOS();
 			}
 		});
 		btnNewButton.setBounds(431, 192, 120, 38);

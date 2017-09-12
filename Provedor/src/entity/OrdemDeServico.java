@@ -18,12 +18,11 @@ public class OrdemDeServico {
 	private Funcionario responsavel;//funcionario que abriu/fechou a OS 
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();	//comentarios feitos ao longo da 'vida' da OS
 
-	//acrescentado String motivo e Date dtNascimento
-	public OrdemDeServico(Cliente cliente, String status) {
+	public OrdemDeServico(Cliente cliente, Status status, String motivo) {
 		super();
 		this.clienteDaOS = cliente;
-		//this.motivo = motivo;
-		this.status = Status.ABERTO;
+		this.motivo = motivo;
+		this.status = status;
 		this.dataCriacao = new Date();
 	}
 
@@ -85,5 +84,7 @@ public class OrdemDeServico {
 	public void setResponsavel(Funcionario responsavel) {
 		this.responsavel = responsavel;
 	}
-
+	public static void setNextIdOS(int nextIdOS) {
+		OrdemDeServico.nextId = nextIdOS;
+	}
 }

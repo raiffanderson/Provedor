@@ -31,7 +31,7 @@ public class Provedor {
 	}
 
 	public void criaOS(Cliente cliente, String motivo){
-		OrdemDeServico OS = new OrdemDeServico(cliente,motivo);
+		OrdemDeServico OS = new OrdemDeServico(cliente,Status.ABERTO, motivo);
 		listaOSs.add(OS);
 	}
 	

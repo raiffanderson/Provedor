@@ -11,6 +11,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import entity.*;
 import persistence.ReadFiles;
+import persistence.WriteFiles;
 
 import java.awt.Font;
 import javax.swing.JTable;
@@ -30,6 +31,8 @@ import javax.swing.UIManager;
 import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class FramePrincipal {
 
@@ -46,6 +49,7 @@ public class FramePrincipal {
 										// mostradas vão ser todas ou apenas as
 										// em status aberto
 	private ReadFiles reader;
+										private WriteFiles writer;
 
 	/**
 	 * Launch the application.
@@ -92,8 +96,8 @@ public class FramePrincipal {
 		scrollPaneOSs.setBounds(156, 63, 572, 200);
 		getFramePrincipal().getContentPane().add(scrollPaneOSs);
 
-//		this.frameCriaOS.setProvedor(provedor);
-
+		// this.frameCriaOS.setProvedor(provedor);
+		carregaOSs();
 		updateListOS();
 
 		JButton btnNewButton = new JButton("CRIAR");
@@ -170,6 +174,12 @@ public class FramePrincipal {
 
 	public void setFramePrincipal(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
+		framePrincipal.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				gravaOS();
+			}
+		});
 		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("img/help-icon.png"));
 		framePrincipal.getContentPane().setBackground(Color.WHITE);
 	}
@@ -195,5 +205,30 @@ public class FramePrincipal {
 		jListOSs.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		jListOSs.setModel(provedor.getListaOSsModel(onlyOpen));
 		scrollPaneOSs.setViewportView(jListOSs);
+	}
+
+	private void carregaOSs() {
+		reader = new ReadFiles();
+		reader.setClientes(provedor.getClientes());
+		reader.setOSs(provedor.getListaOSs());
+		try {
+			reader.readClientes();
+			reader.readOSs();
+			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		updateListOS();
+	}
+
+	private void gravaOS() {
+		try {
+			writer = new WriteFiles();
+			writer.setOSs(provedor.getListaOSs());
+			writer.gravaOSs();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

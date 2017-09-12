@@ -12,11 +12,12 @@ import java.util.Date;
 import entity.Cliente;
 import entity.OrdemDeServico;
 import entity.Sexo;
+import entity.Status;
 
 public class ReadFiles {
 
 	private static File fileClientes = new File("files\\clientes.txt");
-	private static File fileOSs = new File("files\\listaOSs.txt");
+	private static File fileOSs = new File("files\\OSs.txt");
 	private int idCliente;
 	private int cpf;
 	private int rg;
@@ -24,10 +25,12 @@ public class ReadFiles {
 	private String plano;
 	private Sexo sexo;
 	private Date dtNascimento;
-	private String status;
+	private Status status;
 	private String motivo;
 	ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>();
+	private int idOS;
+	private Date dtCriacao;
 	
 	public void readClientes() throws IOException {
 		FileReader fileReader = new FileReader(fileClientes);
@@ -62,7 +65,7 @@ public class ReadFiles {
 	}
 	
 	//para ler as OSs e armazena-las
-	/*public void readOSs() throws IOException {
+	public void readOSs() throws IOException {
 		FileReader fileReader = new FileReader(fileOSs);
 		BufferedReader reader = new BufferedReader(fileReader);
 		String data = null;
@@ -70,19 +73,39 @@ public class ReadFiles {
 			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador  da data
 			formatDate.format(new Date());
 			String[] arrayLinha = data.split(",");
-			idCliente = Integer.parseInt(arrayLinha[0]);
-			status = arrayLinha[1];
-			motivo = (arrayLinha[2]);
+			idOS = Integer.parseInt(arrayLinha[0]);
+			status = Status.valueOf(arrayLinha[1]);
+			idCliente = Integer.parseInt(arrayLinha[2]);
+			motivo = arrayLinha[3];
 			
 			try {
-				dtNascimento = formatDate.parse(arrayLinha[5]);
+				dtCriacao = formatDate.parse(arrayLinha[4]);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			OSs.add(new OrdemDeServico(null, status, motivo, dtNascimento));
+			
+			OSs.add(new OrdemDeServico(buscaCliente(idCliente),status, motivo));
 		}
 		fileReader.close();
 		reader.close();
-	}*/
+	}
+
+	private Cliente buscaCliente(int idCliente2) {
+		Cliente cliente = null;
+		
+		for (Cliente cust: clientes){
+			if (cust.getIdCliente() == idCliente2){
+				cliente = cust;
+			}
+		}
+		
+		return cliente;
+	}
+
+	public void setOSs(ArrayList<OrdemDeServico> listaOSs) {
+		(new OrdemDeServico(null,null, null)).setNextIdOS(1);
+		this.OSs = listaOSs;
+		this.OSs.clear();			
+	}
 	
 }
