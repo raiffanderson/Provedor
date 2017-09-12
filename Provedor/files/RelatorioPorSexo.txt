@@ -8,7 +8,6 @@
  Id: 007  | Cpf: 00001 | Rg: 00001 | Sexo: MASCULINO | Plano: Basico- Nome: opa
  Id: 008  | Cpf: 00213 | Rg: 00213 | Sexo: MASCULINO | Plano: Basico- Nome: gfhgf
  Id: 009  | Cpf: 00012 | Rg: 00021 | Sexo: MASCULINO | Plano: Basico- Nome: sd
- Id: 010  | Cpf: 1111111111 | Rg: 1111111111 | Sexo: MASCULINO | Plano: Basico- Nome: sadasdsd
- Id: 011  | Cpf: 00002 | Rg: 00002 | Sexo: MASCULINO | Plano: Basico- Nome: Douglas
+ Id: 010  | Cpf: 00002 | Rg: 00002 | Sexo: MASCULINO | Plano: Basico- Nome: ouglas
 ----------------------------------------------------------------------------CLIENTES SEXO: F-------------------------------------------------------------------------------
- Id: 012  | Cpf: 01111 | Rg: 02424 | Sexo: FEMININO | Plano: Basico- Nome: Betinha
+ Id: 011  | Cpf: 01111 | Rg: 02424 | Sexo: FEMININO | Plano: Basico- Nome: Betinha

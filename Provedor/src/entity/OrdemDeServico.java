@@ -18,7 +18,8 @@ public class OrdemDeServico {
 	private Funcionario responsavel;//funcionario que abriu/fechou a OS 
 	private ArrayList<Comentario> comentarios = new ArrayList<Comentario>();	//comentarios feitos ao longo da 'vida' da OS
 
-	public OrdemDeServico(Cliente cliente, String motivo) {
+	//acrescentado String motivo e Date dtNascimento
+	public OrdemDeServico(Cliente cliente, String motivo, String status, Date dtNascimento) {
 		super();
 		this.clienteDaOS = cliente;
 		this.motivo = motivo;
@@ -26,6 +27,7 @@ public class OrdemDeServico {
 		this.dataCriacao = new Date();
 	}
 
+	
 	public String getMotivo() {
 		return motivo;
 	}

@@ -16,6 +16,7 @@ import entity.Sexo;
 public class ReadFiles {
 
 	private static File fileClientes = new File("files\\clientes.txt");
+	private static File fileOSs = new File("files\\listaOSs.txt");
 	private int idCliente;
 	private int cpf;
 	private int rg;
@@ -23,9 +24,11 @@ public class ReadFiles {
 	private String plano;
 	private Sexo sexo;
 	private Date dtNascimento;
+	private String status;
+	private String motivo;
 	ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>();
-
+	
 	public void readClientes() throws IOException {
 		FileReader fileReader = new FileReader(fileClientes);
 		BufferedReader reader = new BufferedReader(fileReader);
@@ -57,5 +60,29 @@ public class ReadFiles {
 		this.clientes = arrayClientes;
 		this.clientes.clear();	
 	}
-
+	
+	//para ler as OSs e armazena-las
+	public void readOSs() throws IOException {
+		FileReader fileReader = new FileReader(fileOSs);
+		BufferedReader reader = new BufferedReader(fileReader);
+		String data = null;
+		while ((data = reader.readLine()) != null) {
+			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador  da data
+			formatDate.format(new Date());
+			String[] arrayLinha = data.split(",");
+			idCliente = Integer.parseInt(arrayLinha[0]);
+			status = arrayLinha[1];
+			motivo = (arrayLinha[2]);
+			
+			try {
+				dtNascimento = formatDate.parse(arrayLinha[5]);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			OSs.add(new OrdemDeServico(null, status, motivo, dtNascimento));
+		}
+		fileReader.close();
+		reader.close();
+	}
+	
 }
