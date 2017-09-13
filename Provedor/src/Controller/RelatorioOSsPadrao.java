@@ -19,7 +19,6 @@ public class RelatorioOSsPadrao extends Relatorio {
 	ArrayList<OrdemDeServico> abertas = new ArrayList<OrdemDeServico>();
 	ArrayList<OrdemDeServico> fechadas = new ArrayList<OrdemDeServico>();
 	ArrayList<OrdemDeServico> canceladas = new ArrayList<OrdemDeServico>();
-	SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador_da_data
 	String pathRelatorioOSsPadrao = "files/RelatorioOSsPadrao.txt";
 
 	@Override
@@ -52,13 +51,13 @@ public class RelatorioOSsPadrao extends Relatorio {
 		writer.write("------------------RELATÓRIO DE ORDENS DE SERVIÇO (PADRÃO)--------------------------\n");
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
-		writer.write(String.format("ORDEM DE SERVIÇOS ABERTAS:              %02d",abertas.size()));
+		writer.write(String.format("ORDEM DE SERVIÇOS ABERTAS:              %02d", abertas.size()));
 		writer.newLine();
-		writer.write(String.format("ORDEM DE SERVIÇOS FECHADAS:             %02d",fechadas.size()));
+		writer.write(String.format("ORDEM DE SERVIÇOS FECHADAS:             %02d", fechadas.size()));
 		writer.newLine();
-		writer.write(String.format("ORDEM DE SERVIÇOS CANCELADAS:           %02d",canceladas.size()));
+		writer.write(String.format("ORDEM DE SERVIÇOS CANCELADAS:           %02d", canceladas.size()));
 		writer.newLine();
-		writer.write(String.format("TOTAL DE ORDEM DE SERVIÇOS PROCESSADAS: %02d",OSs.size()));
+		writer.write(String.format("TOTAL DE ORDEM DE SERVIÇOS PROCESSADAS: %02d", OSs.size()));
 		writer.newLine();
 		writer.newLine();
 		writer.newLine();
@@ -66,19 +65,15 @@ public class RelatorioOSsPadrao extends Relatorio {
 		writer.write("-----------------------------------DETALHAMENTO------------------------------------\n");
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
-		writer.write(
-				String.format("ORDEM DE SERVIÇOS ABERTAS: %02d",
-						abertas.size()));
+		writer.write(String.format("ORDEM DE SERVIÇOS ABERTAS: %02d", abertas.size()));
 		writer.newLine();
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
 		inserebloco(abertas, writer);
-		
+
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
-		writer.write(
-				String.format("ORDEM DE SERVIÇOS FECHADAS: %02d",
-						fechadas.size()));
+		writer.write(String.format("ORDEM DE SERVIÇOS FECHADAS: %02d", fechadas.size()));
 		writer.newLine();
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
@@ -86,19 +81,17 @@ public class RelatorioOSsPadrao extends Relatorio {
 
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
-		writer.write(
-				String.format("ORDEM DE SERVIÇOS CANCELADAS: %02d",
-						canceladas.size()));
+		writer.write(String.format("ORDEM DE SERVIÇOS CANCELADAS: %02d", canceladas.size()));
 		writer.newLine();
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
 		inserebloco(canceladas, writer);
-		
+
 		// Criando o conteúdo do arquivo
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Relatorio de OSs padrão gerado: " + pathRelatorioOSsPadrao);
+		System.out.println(formatDate.format(new Date()) + " - Relatorio gerado: " + pathRelatorioOSsPadrao);
 
 	}
 

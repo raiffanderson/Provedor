@@ -16,7 +16,6 @@ public class RelatorioClientesPorSexo extends Relatorio {
 
 	ArrayList<Cliente> masculino = new ArrayList<Cliente>();
 	ArrayList<Cliente> feminino = new ArrayList<Cliente>();
-	SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador_da_data
 	String pathRelatorioClientesPorSexo = "files/RelatorioDeClientesPorSexo.txt";
 
 	public RelatorioClientesPorSexo() {
@@ -78,7 +77,7 @@ public class RelatorioClientesPorSexo extends Relatorio {
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Relatorio de Clientes p/Sexo gerado: " + pathRelatorioClientesPorSexo);
+		System.out.println(formatDate.format(new Date()) + " - Relatorio gerado: " + pathRelatorioClientesPorSexo);
 
 	}
 

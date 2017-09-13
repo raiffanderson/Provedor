@@ -4,34 +4,32 @@ import java.io.IOException;
 
 public class GeradoraDeRelatorios {
 
-	private static RelatorioClientesPadrao relatorioClientesDefault;
-	private static RelatorioClientesPorSexo relatorioClientesPorSexo;
-	private static RelatorioOSsPadrao relatorioOSsPadrao;
-	private static RelatorioOSsPorSexo relatorioOSsPorSexo;
-	private static RelatorioOSsPorMes relatorioPorData;
-	private static RelatorioOSsPorAno relatorioPorAno;
-	private static RelatorioPorMotivo relatorioPorMotivo;
+	private static Relatorio relatorioClientesPadrao;
+	private static Relatorio relatorioClientesPorSexo;
+	private static Relatorio relatorioOSsPadrao;
+	private static Relatorio relatorioPorAno;
+	private static Relatorio relatorioPorMes;
+	private static Relatorio relatorioOSsPorSexo;
+	private static Relatorio relatorioPorMotivo;
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		relatorioClientesDefault = new RelatorioClientesPadrao(); 
+
+		relatorioClientesPadrao = new RelatorioClientesPadrao();
 		relatorioClientesPorSexo = new RelatorioClientesPorSexo();
 		relatorioOSsPadrao = new RelatorioOSsPadrao();
-		relatorioOSsPorSexo = new RelatorioOSsPorSexo();
-		relatorioPorData = new RelatorioOSsPorMes();
 		relatorioPorAno = new RelatorioOSsPorAno();
-		
-		relatorioClientesDefault.geraRelatorio();
+		relatorioPorMes = new RelatorioOSsPorMes();
+		relatorioOSsPorSexo = new RelatorioOSsPorSexo();
+		relatorioPorMotivo = new RelatorioOsPorMotivo();
+
+		relatorioClientesPadrao.geraRelatorio();
 		relatorioClientesPorSexo.geraRelatorio();
 		relatorioOSsPadrao.geraRelatorio();
 		relatorioOSsPorSexo.geraRelatorio();
-		relatorioPorData.geraRelatorio();
+		relatorioPorMes.geraRelatorio();
 		relatorioPorAno.geraRelatorio();
-//		relatorioPorMotivo.geraRelatorio();
-		
-	
+		relatorioPorMotivo.geraRelatorio();
+
 	}
-	
-	
 
 }

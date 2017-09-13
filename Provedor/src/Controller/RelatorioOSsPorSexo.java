@@ -14,7 +14,6 @@ import entity.Sexo;
 import persistence.ReadFiles;
 
 public class RelatorioOSsPorSexo extends Relatorio {
-	
 
 	ArrayList<OrdemDeServico> masculino = new ArrayList<OrdemDeServico>();
 	ArrayList<OrdemDeServico> feminino = new ArrayList<OrdemDeServico>();
@@ -51,9 +50,9 @@ public class RelatorioOSsPorSexo extends Relatorio {
 
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
-		writer.write(
-				String.format("----------------------------ORDEM DE SERVIÇOS ABERTAS POR HOMENS: %02d-------------------------",
-						masculino.size()));
+		writer.write(String.format(
+				"----------------------------ORDEM DE SERVIÇOS ABERTAS POR HOMENS: %02d-------------------------",
+				masculino.size()));
 		writer.newLine();
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
@@ -66,9 +65,9 @@ public class RelatorioOSsPorSexo extends Relatorio {
 		writer.newLine();
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
-		writer.write(
-				String.format("----------------------------ORDEM DE SERVIÇOS ABERTAS POR MULHERES: %02d--------------------------",
-						feminino.size()));
+		writer.write(String.format(
+				"----------------------------ORDEM DE SERVIÇOS ABERTAS POR MULHERES: %02d--------------------------",
+				feminino.size()));
 		writer.newLine();
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
@@ -81,7 +80,7 @@ public class RelatorioOSsPorSexo extends Relatorio {
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Relatorio p/Sexo gerado: " + pathRelatorioOSsPorSexo);
+		System.out.println(formatDate.format(new Date()) + " - Relatorio gerado: " + pathRelatorioOSsPorSexo);
 
 	}
 

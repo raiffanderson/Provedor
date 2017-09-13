@@ -19,9 +19,9 @@ public abstract class Relatorio {
 	ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>();
 	ReadFiles leitor = new ReadFiles();
 	SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador_da_data
-	
-	public void geraRelatorio() throws IOException{
-		
+
+	public void geraRelatorio() throws IOException {
+		System.out.println(formatDate.format(new Date()) + " - Relatório não especificado.");
 	}
 
 }

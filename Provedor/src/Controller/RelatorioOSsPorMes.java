@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import entity.OrdemDeServico;
 import entity.Status;
@@ -16,7 +17,7 @@ import persistence.ReadFiles;
 
 public class RelatorioOSsPorMes extends Relatorio {
 
-	Map<String, Integer> mapaMeses = new HashMap<String, Integer>();
+	Map<String, ArrayList<OrdemDeServico>> mapaMeses = new HashMap<String, ArrayList<OrdemDeServico>>();
 
 	String pathRelatorioOSsPorMes = "files/RelatorioOSsPorMes.txt";
 
@@ -40,14 +41,16 @@ public class RelatorioOSsPorMes extends Relatorio {
 			String mes = formatDate.format(os.getDataCriacao());
 			mes = mes.substring(3, 5);
 
-			Integer quantidade = mapaMeses.get(mes);
+			ArrayList<OrdemDeServico> ordens = mapaMeses.get(mes);
 			// System.out.println(mapaMeses.get(mes));
-			if (quantidade == null) {
-				mapaMeses.put(mes, new Integer(1));
+			if (ordens == null) {
+				ArrayList<OrdemDeServico> novaLista = new ArrayList<OrdemDeServico>();
+				novaLista.add(os);
+				mapaMeses.put(mes, novaLista);
 			} else {
-				quantidade++;
+				ordens.add(os);
 				mapaMeses.remove(mes);
-				mapaMeses.put(mes, new Integer(quantidade));
+				mapaMeses.put(mes, ordens);
 			}
 
 		}
@@ -57,17 +60,30 @@ public class RelatorioOSsPorMes extends Relatorio {
 		writer.write("-----------------------------------------------------------------------------------");
 		writer.newLine();
 
-		for (Map.Entry<String, Integer> o : mapaMeses.entrySet()) {
-			writer.write("Mes: " + o.getKey() + " - Nº OSs: " + o.getValue());
+		for (Entry<String, ArrayList<OrdemDeServico>> o : mapaMeses.entrySet()) {
+			writer.write("Mes: " + o.getKey() + " - Nº OSs: " + o.getValue().size());
 			writer.newLine();
 		}
 
+		writer.newLine();
+		writer.newLine();
+		for (Entry<String, ArrayList<OrdemDeServico>> o : mapaMeses.entrySet()) {
+			writer.write("-----------------------------------------------------------------------------------\n");
+			writer.write(String.format("MES: %s", o.getKey().toString()));
+			writer.newLine();
+			writer.write("-----------------------------------------------------------------------------------");
+			writer.newLine();
+			for (OrdemDeServico os : o.getValue()) {
+				writer.write(os.toString());
+				writer.newLine();
+			}
+			writer.newLine();
+		}
 		// Criando o conteúdo do arquivo
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(
-				formatDate.format(new Date()) + " - Relatorio de OSs padrão gerado: " + pathRelatorioOSsPorMes);
+		System.out.println(formatDate.format(new Date()) + " - Relatorio gerado: " + pathRelatorioOSsPorMes);
 
 	}
 }
