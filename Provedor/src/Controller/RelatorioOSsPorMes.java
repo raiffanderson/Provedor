@@ -20,11 +20,6 @@ public class RelatorioOSsPorMes extends Relatorio {
 
 	String pathRelatorioOSsPorMes = "files/RelatorioOSsPorMes.txt";
 
-	// Map<integer, string=""> mapaNomes = new HashMap<integer, string="">();
-	// mapaNomes.put(1, "João Delfino");
-	// mapaNomes.put(2, "Maria do Carmo");
-	// mapaNomes.put(3, "Claudinei Silva");
-
 	@Override
 	public void geraRelatorio() throws IOException {
 
@@ -46,7 +41,7 @@ public class RelatorioOSsPorMes extends Relatorio {
 			mes = mes.substring(3, 5);
 
 			Integer quantidade = mapaMeses.get(mes);
-			//System.out.println(mapaMeses.get(mes));
+			// System.out.println(mapaMeses.get(mes));
 			if (quantidade == null) {
 				mapaMeses.put(mes, new Integer(1));
 			} else {
@@ -66,22 +61,6 @@ public class RelatorioOSsPorMes extends Relatorio {
 			writer.write("Mes: " + o.getKey() + " - Nº OSs: " + o.getValue());
 			writer.newLine();
 		}
-
-		// writer.newLine();
-		// writer.write(String.format("ORDEM DE SERVIÇOS ABERTAS: %02d",
-		// abertas.size()));
-		// writer.newLine();
-		// writer.write(String.format("ORDEM DE SERVIÇOS FECHADAS: %02d",
-		// fechadas.size()));
-		// writer.newLine();
-		// writer.write(String.format("ORDEM DE SERVIÇOS CANCELADAS: %02d",
-		// canceladas.size()));
-		// writer.newLine();
-		// writer.write(String.format("TOTAL DE ORDEM DE SERVIÇOS PROCESSADAS:
-		// %02d", OSs.size()));
-		// writer.newLine();
-		// writer.newLine();
-		// writer.newLine();
 
 		// Criando o conteúdo do arquivo
 		writer.flush();

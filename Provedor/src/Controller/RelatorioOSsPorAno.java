@@ -12,19 +12,11 @@ import java.util.Map;
 import entity.OrdemDeServico;
 import persistence.ReadFiles;
 
-public class RelatorioOSsPorAno extends Relatorio{
+public class RelatorioOSsPorAno extends Relatorio {
 
 	Map<String, Integer> mapaMeses = new HashMap<String, Integer>();
 
-	ArrayList<OrdemDeServico> abertas = new ArrayList<OrdemDeServico>();
-	ArrayList<OrdemDeServico> fechadas = new ArrayList<OrdemDeServico>();
-	ArrayList<OrdemDeServico> canceladas = new ArrayList<OrdemDeServico>();
 	String pathRelatorioOSsPorAno = "files/RelatorioOSsPorAno.txt";
-
-	// Map<integer, string=""> mapaNomes = new HashMap<integer, string="">();
-	// mapaNomes.put(1, "João Delfino");
-	// mapaNomes.put(2, "Maria do Carmo");
-	// mapaNomes.put(3, "Claudinei Silva");
 
 	@Override
 	public void geraRelatorio() throws IOException {
@@ -47,7 +39,7 @@ public class RelatorioOSsPorAno extends Relatorio{
 			mes = mes.substring(6, 10);
 
 			Integer quantidade = mapaMeses.get(mes);
-			//System.out.println(mapaMeses.get(mes));
+			// System.out.println(mapaMeses.get(mes));
 			if (quantidade == null) {
 				mapaMeses.put(mes, new Integer(1));
 			} else {
@@ -67,22 +59,6 @@ public class RelatorioOSsPorAno extends Relatorio{
 			writer.write("Ano: " + o.getKey() + " - Nº OSs: " + o.getValue());
 			writer.newLine();
 		}
-
-		// writer.newLine();
-		// writer.write(String.format("ORDEM DE SERVIÇOS ABERTAS: %02d",
-		// abertas.size()));
-		// writer.newLine();
-		// writer.write(String.format("ORDEM DE SERVIÇOS FECHADAS: %02d",
-		// fechadas.size()));
-		// writer.newLine();
-		// writer.write(String.format("ORDEM DE SERVIÇOS CANCELADAS: %02d",
-		// canceladas.size()));
-		// writer.newLine();
-		// writer.write(String.format("TOTAL DE ORDEM DE SERVIÇOS PROCESSADAS:
-		// %02d", OSs.size()));
-		// writer.newLine();
-		// writer.newLine();
-		// writer.newLine();
 
 		// Criando o conteúdo do arquivo
 		writer.flush();
