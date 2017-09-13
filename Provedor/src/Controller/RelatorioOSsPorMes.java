@@ -14,14 +14,11 @@ import entity.OrdemDeServico;
 import entity.Status;
 import persistence.ReadFiles;
 
-public class RelatorioOSsPorData extends Relatorio {
+public class RelatorioOSsPorMes extends Relatorio {
 
 	Map<String, Integer> mapaMeses = new HashMap<String, Integer>();
 
-	ArrayList<OrdemDeServico> abertas = new ArrayList<OrdemDeServico>();
-	ArrayList<OrdemDeServico> fechadas = new ArrayList<OrdemDeServico>();
-	ArrayList<OrdemDeServico> canceladas = new ArrayList<OrdemDeServico>();
-	String pathRelatorioOSsPorData = "files/RelatorioOSsPorData.txt";
+	String pathRelatorioOSsPorMes = "files/RelatorioOSsPorMes.txt";
 
 	// Map<integer, string=""> mapaNomes = new HashMap<integer, string="">();
 	// mapaNomes.put(1, "João Delfino");
@@ -41,8 +38,8 @@ public class RelatorioOSsPorData extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioOSsPorData);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioOSsPorData));
+		File fileClientes = new File(pathRelatorioOSsPorMes);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioOSsPorMes));
 
 		for (OrdemDeServico os : OSs) {
 			String mes = formatDate.format(os.getDataCriacao());
@@ -91,7 +88,7 @@ public class RelatorioOSsPorData extends Relatorio {
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
 		System.out.println(
-				formatDate.format(new Date()) + " - Relatorio de OSs padrão gerado: " + pathRelatorioOSsPorData);
+				formatDate.format(new Date()) + " - Relatorio de OSs padrão gerado: " + pathRelatorioOSsPorMes);
 
 	}
 }

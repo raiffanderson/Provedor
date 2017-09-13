@@ -8,7 +8,8 @@ public class GeradoraDeRelatorios {
 	private static RelatorioClientesPorSexo relatorioClientesPorSexo;
 	private static RelatorioOSsPadrao relatorioOSsPadrao;
 	private static RelatorioOSsPorSexo relatorioOSsPorSexo;
-	private static RelatorioOSsPorData relatorioPorData;
+	private static RelatorioOSsPorMes relatorioPorData;
+	private static RelatorioOSsPorAno relatorioPorAno;
 	private static RelatorioPorMotivo relatorioPorMotivo;
 
 	public static void main(String[] args) throws IOException {
@@ -17,13 +18,15 @@ public class GeradoraDeRelatorios {
 		relatorioClientesPorSexo = new RelatorioClientesPorSexo();
 		relatorioOSsPadrao = new RelatorioOSsPadrao();
 		relatorioOSsPorSexo = new RelatorioOSsPorSexo();
-		relatorioPorData = new RelatorioOSsPorData();
+		relatorioPorData = new RelatorioOSsPorMes();
+		relatorioPorAno = new RelatorioOSsPorAno();
 		
 		relatorioClientesDefault.geraRelatorio();
 		relatorioClientesPorSexo.geraRelatorio();
 		relatorioOSsPadrao.geraRelatorio();
 		relatorioOSsPorSexo.geraRelatorio();
 		relatorioPorData.geraRelatorio();
+		relatorioPorAno.geraRelatorio();
 //		relatorioPorMotivo.geraRelatorio();
 		
 	
