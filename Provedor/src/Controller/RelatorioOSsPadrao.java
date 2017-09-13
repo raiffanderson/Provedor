@@ -96,7 +96,7 @@ public class RelatorioOSsPadrao extends Relatorio {
 	}
 
 	private void inserebloco(ArrayList<OrdemDeServico> ordens, BufferedWriter writer) throws IOException {
-		for (OrdemDeServico os : abertas) {
+		for (OrdemDeServico os : ordens) {
 			writer.write(os.toString());
 			writer.newLine();
 		}
