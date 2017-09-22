@@ -30,7 +30,7 @@ public class WriteFiles {
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - OS adicionada: " + pathOSs);
+		System.out.println(formatDate.format(new Date()) + " - OSs salvas: " + pathOSs);
 	}
 
 	private String montaLinhaOSs(OrdemDeServico os) {
@@ -58,7 +58,7 @@ public class WriteFiles {
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.
 		writer.close();
-		System.out.println(formatDate.format(new Date()) + " - Cliente adicionado: " + pathClientes);
+		System.out.println(formatDate.format(new Date()) + " - Clientes salvos: " + pathClientes);
 	}
 
 	private String montaLinhaClientes(Cliente cliente) {

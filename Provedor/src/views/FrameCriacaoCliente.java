@@ -127,7 +127,7 @@ public class FrameCriacaoCliente extends JFrame {
 				frameCriaOS.updateListClientes();
 				frameCriaOS.setVisible(true);
 				dispose();
-				gravaClientes();
+				//gravaClientes();
 			}
 		});
 		btnCadastrat.setBounds(267, 170, 117, 30);
