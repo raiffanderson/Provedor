@@ -36,8 +36,8 @@ public class FrameCriacaoCliente extends JFrame {
 	private JTextField textFieldCPF;
 	private JTextField textFieldRG;
 	private Provedor provedor = new Provedor();
-	private WriteFiles writer;
-	private ReadFiles reader;
+//	private WriteFiles writer;
+//	private ReadFiles reader;
 
 	/**
 	 * Launch the application.
@@ -165,13 +165,13 @@ public class FrameCriacaoCliente extends JFrame {
 		this.provedor = provedor;
 	}
 
-	private void gravaClientes() {
-		try {
-			writer = new WriteFiles();
-			writer.setClientes(provedor.getClientes());
-			writer.gravaClientes();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void gravaClientes() {
+//		try {
+//			writer = new WriteFiles();
+//			writer.setClientes(provedor.getClientes());
+//			writer.gravaClientes();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
