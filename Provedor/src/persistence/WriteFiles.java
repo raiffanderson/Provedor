@@ -40,20 +40,12 @@ public class WriteFiles {
 
 	public void gravaClientes() throws IOException {
 		File fileClientes = new File(pathClientes);
-		// long begin = System.currentTimeMillis();
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fileClientes));
 
 		for (Cliente cliente : clientes) {
 			writer.write(montaLinhaClientes(cliente));
 			writer.newLine();
 		}
-		// writer.write("Arquivo gravado em : " + new
-		// SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date()));
-		// writer.newLine();
-		// writer.write("Caminho da gravação: " + pathClientes);
-		// writer.newLine();
-		// long end = System.currentTimeMillis();
-		// writer.write("Tempo de gravação: " + (end - begin) + "ms.");
 		// Criando o conteúdo do arquivo
 		writer.flush();
 		// Fechando conexão e escrita do arquivo.

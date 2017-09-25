@@ -1,7 +1,6 @@
 package Controller;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,7 +31,6 @@ public class RelatorioOSsPorAno extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioOSsPorAno);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioOSsPorAno));
 
 		for (OrdemDeServico os : OSs) {

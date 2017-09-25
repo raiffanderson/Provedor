@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
+import Controller.GeradoraDeRelatorios;
 import entity.*;
 import persistence.ReadFiles;
 import persistence.WriteFiles;
@@ -37,10 +38,17 @@ import java.awt.event.WindowEvent;
 public class FramePrincipal {
 
 	private JFrame framePrincipal;
-	DefaultListModel listModelOSs = new DefaultListModel(); // Model que vai ser
-															// consumido pela
-															// Jlist de OSs
-	JList jListOSs = new JList(); // jList responsavel por exibir as OSs
+	DefaultListModel<OrdemDeServico> listModelOSs = new DefaultListModel<OrdemDeServico>(); // Model
+																							// que
+																							// vai
+																							// ser
+	// consumido pela
+	// Jlist de OSs
+	JList<OrdemDeServico> jListOSs = new JList<OrdemDeServico>(); // jList
+																	// responsavel
+																	// por
+																	// exibir as
+																	// OSs
 	JScrollPane scrollPaneOSs; // scroolpanel que circunda a Jlist das OSs
 
 	private Provedor provedor = new Provedor();
@@ -49,7 +57,8 @@ public class FramePrincipal {
 										// mostradas vão ser todas ou apenas as
 										// em status aberto
 	private ReadFiles reader;
-										private WriteFiles writer;
+	private WriteFiles writer;
+	VisualizadorDeRelatorios visRelatorio;
 
 	/**
 	 * Launch the application.
@@ -96,7 +105,6 @@ public class FramePrincipal {
 		scrollPaneOSs.setBounds(156, 63, 572, 200);
 		getFramePrincipal().getContentPane().add(scrollPaneOSs);
 
-		// this.frameCriaOS.setProvedor(provedor);
 		carregaOSs();
 		updateListOS();
 
@@ -166,6 +174,24 @@ public class FramePrincipal {
 		rdbtnMostrarApenasEm.setBounds(554, 264, 174, 23);
 		framePrincipal.getContentPane().add(rdbtnMostrarApenasEm);
 
+		JButton btnVisualizarRelatrios = new JButton("Visualizar Relat\u00F3rios");
+		btnVisualizarRelatrios.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnVisualizarRelatrios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GeradoraDeRelatorios genRelatorios = new GeradoraDeRelatorios();
+				try {
+					genRelatorios.geraRelatorios();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				VisualizadorDeRelatorios visRelatorio = new VisualizadorDeRelatorios();
+				visRelatorio.getFrame().setVisible(true);
+			}
+		});
+		btnVisualizarRelatrios.setBounds(156, 264, 127, 23);
+		framePrincipal.getContentPane().add(btnVisualizarRelatrios);
+
 	}
 
 	public JFrame getFramePrincipal() {
@@ -214,9 +240,8 @@ public class FramePrincipal {
 		try {
 			reader.readClientes();
 			reader.readOSs();
-			
+
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		updateListOS();

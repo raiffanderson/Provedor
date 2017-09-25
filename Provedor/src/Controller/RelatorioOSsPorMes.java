@@ -1,10 +1,8 @@
 package Controller;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,7 +10,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import entity.OrdemDeServico;
-import entity.Status;
 import persistence.ReadFiles;
 
 public class RelatorioOSsPorMes extends Relatorio {
@@ -34,7 +31,6 @@ public class RelatorioOSsPorMes extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioOSsPorMes);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioOSsPorMes));
 
 		for (OrdemDeServico os : OSs) {

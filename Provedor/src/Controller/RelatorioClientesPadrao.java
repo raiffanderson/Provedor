@@ -1,7 +1,6 @@
 package Controller;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -24,7 +23,6 @@ public class RelatorioClientesPadrao extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioDefault);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioDefault));
 
 		writer.write("-----------------------------------------------------------------------------------");

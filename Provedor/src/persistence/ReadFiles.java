@@ -31,13 +31,15 @@ public class ReadFiles {
 	ArrayList<OrdemDeServico> OSs = new ArrayList<OrdemDeServico>();
 	private int idOS;
 	private Date dtCriacao;
-	
+
 	public void readClientes() throws IOException {
 		FileReader fileReader = new FileReader(fileClientes);
 		BufferedReader reader = new BufferedReader(fileReader);
 		String data = null;
 		while ((data = reader.readLine()) != null) {
-			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador  da data
+			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy HH:MM:ss");// formatador
+																						// da
+																						// data
 			formatDate.format(new Date());
 			String[] arrayLinha = data.split(",");
 			idCliente = Integer.parseInt(arrayLinha[0]);
@@ -61,32 +63,34 @@ public class ReadFiles {
 	public void setClientes(ArrayList<Cliente> arrayClientes) {
 		(new Cliente(nome, cpf, rg, sexo, dtNascimento, plano)).setNextIdCliente(1);
 		this.clientes = arrayClientes;
-		this.clientes.clear();	
+		this.clientes.clear();
 	}
-	
-	//para ler as OSs e armazena-las
+
+	// para ler as OSs e armazena-las
 	public void readOSs() throws IOException {
 		FileReader fileReader = new FileReader(fileOSs);
 		BufferedReader reader = new BufferedReader(fileReader);
 		String data = null;
 		while ((data = reader.readLine()) != null) {
-			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador  da data
+			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");// formatador
+																						// da
+																						// data
 			formatDate.format(new Date());
 			String[] arrayLinha = data.split(",");
 			idOS = Integer.parseInt(arrayLinha[0]);
 			status = Status.valueOf(arrayLinha[1]);
 			idCliente = Integer.parseInt(arrayLinha[2]);
 			motivo = arrayLinha[3];
-			
+
 			try {
 				dtCriacao = formatDate.parse(arrayLinha[4]);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			OrdemDeServico os = new OrdemDeServico(buscaCliente(idCliente),status, motivo);
+			OrdemDeServico os = new OrdemDeServico(buscaCliente(idCliente), status, motivo);
 			os.setDataCriacao(dtCriacao);
 			OSs.add(os);
-			
+
 		}
 		fileReader.close();
 		reader.close();
@@ -94,20 +98,20 @@ public class ReadFiles {
 
 	private Cliente buscaCliente(int idCliente2) {
 		Cliente cliente = null;
-		
-		for (Cliente cust: clientes){
-			if (cust.getIdCliente() == idCliente2){
+
+		for (Cliente cust : clientes) {
+			if (cust.getIdCliente() == idCliente2) {
 				cliente = cust;
 			}
 		}
-		
+
 		return cliente;
 	}
 
 	public void setOSs(ArrayList<OrdemDeServico> listaOSs) {
-		(new OrdemDeServico(null,null, null)).setNextIdOS(1);
+		(new OrdemDeServico(null, null, null)).setNextIdOS(1);
 		this.OSs = listaOSs;
-		this.OSs.clear();			
+		this.OSs.clear();
 	}
-	
+
 }

@@ -3,12 +3,12 @@ package entity;
 import java.util.Date;
 
 public class Pessoa {
-	
+
 	private String nome;
 	private int rg, cpf;
 	private Sexo sexo;
 	private Date nascimento;
-	
+
 	public Pessoa(String nome, int rg, int cpf, Sexo sexo, Date nascimento) {
 		super();
 		this.nome = nome;
@@ -18,39 +18,29 @@ public class Pessoa {
 		this.nascimento = nascimento;
 	}
 
-
 	public int getRg() {
 		return rg;
 	}
-
 
 	public void setRg(int rg) {
 		this.rg = rg;
 	}
 
-
 	public int getCpf() {
 		return cpf;
 	}
-
 
 	public void setCpf(int cpf) {
 		this.cpf = cpf;
 	}
 
-
 	public Sexo getSexo() {
 		return sexo;
 	}
 
-
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
-
-
-
-
 
 	@Override
 	public String toString() {
@@ -58,32 +48,17 @@ public class Pessoa {
 				+ nascimento + "]";
 	}
 
-
-	public void criarOrdem(){
-		
-	}
-	public void fecharOrdem(){
-		
-	}
-	public void cancelarOrdem(){
-		
-	}
-
-
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
 	public Date getNascimento() {
 		return nascimento;
 	}
-
 
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;

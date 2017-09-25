@@ -1,16 +1,12 @@
 package Controller;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import entity.Cliente;
 import entity.OrdemDeServico;
-import entity.Sexo;
 import entity.Status;
 import persistence.ReadFiles;
 
@@ -34,7 +30,6 @@ public class RelatorioOSsPadrao extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioOSsPadrao);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioOSsPadrao));
 
 		for (OrdemDeServico os : OSs) {

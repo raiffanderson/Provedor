@@ -1,10 +1,8 @@
 package Controller;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,7 +32,6 @@ public class RelatorioClientesPorSexo extends Relatorio {
 			e.printStackTrace();
 		}
 
-		File fileClientes = new File(pathRelatorioClientesPorSexo);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(pathRelatorioClientesPorSexo));
 
 		for (Cliente cliente : clientes) {

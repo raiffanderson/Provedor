@@ -56,8 +56,8 @@ public class Provedor {
 		this.listaOSs = listaOSs;
 	}
 
-	public DefaultListModel getListaOSsModel(boolean onlyOpen) {
-		DefaultListModel listModel = new DefaultListModel();
+	public DefaultListModel<OrdemDeServico> getListaOSsModel(boolean onlyOpen) {
+		DefaultListModel<OrdemDeServico> listModel = new DefaultListModel<OrdemDeServico>();
 		for(OrdemDeServico os: this.getListaOSs()){
 			if (!onlyOpen){
 				listModel.addElement(os);				

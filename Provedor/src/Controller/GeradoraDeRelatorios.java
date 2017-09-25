@@ -12,8 +12,19 @@ public class GeradoraDeRelatorios {
 	private static Relatorio relatorioOSsPorSexo;
 	private static Relatorio relatorioPorMotivo;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
+		try {
+			geraRelatorios();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void geraRelatorios() throws IOException{
+		
 		relatorioClientesPadrao = new RelatorioClientesPadrao();
 		relatorioClientesPorSexo = new RelatorioClientesPorSexo();
 		relatorioOSsPadrao = new RelatorioOSsPadrao();
@@ -29,7 +40,6 @@ public class GeradoraDeRelatorios {
 		relatorioPorMes.geraRelatorio();
 		relatorioPorAno.geraRelatorio();
 		relatorioPorMotivo.geraRelatorio();
-
 	}
 
 }
